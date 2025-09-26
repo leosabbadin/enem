@@ -4,10 +4,11 @@
 import { useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { AlertDialog, AlertDialogAction, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '@/components/ui/alert-dialog';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Button } from '@/components/ui/button';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import { Gift, Lightbulb, Swords, BookCheck, CheckCircle2, ChevronRight, MessagesSquare, ClipboardCheck, Projector, Brain } from 'lucide-react';
+import { Gift, Lightbulb, Swords, BookCheck, CheckCircle2, ChevronRight, MessagesSquare, ClipboardCheck, Projector, Brain, Lock } from 'lucide-react';
 
 const bonusItems = [
     {
@@ -341,6 +342,36 @@ export default function BonusPage() {
                         {openBonus === bonus.id && <BonusModal bonus={bonus} />}
                     </Dialog>
                 ))}
+                 <AlertDialog>
+                    <AlertDialogTrigger asChild>
+                        <Card className="bg-card hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer flex flex-col border-dashed border-2">
+                            <CardHeader className="flex-grow">
+                                <div className="mb-4">
+                                    <Lock className="h-10 w-10 text-primary/50" />
+                                </div>
+                                <CardTitle className="font-headline text-xl tracking-tight text-foreground/70">Bônus 5: 9 Bônus extras que serão liberados em 7 dias!!!</CardTitle>
+                                <CardDescription className="text-foreground/70">Conteúdo exclusivo chegando em breve para acelerar sua aprovação.</CardDescription>
+                            </CardHeader>
+                            <CardContent>
+                                <Button variant="link" className="p-0 text-primary/70">
+                                    Verificar Liberação
+                                    <ChevronRight className="h-4 w-4 ml-1" />
+                                </Button>
+                            </CardContent>
+                        </Card>
+                    </AlertDialogTrigger>
+                    <AlertDialogContent>
+                        <AlertDialogHeader>
+                            <AlertDialogTitle className="font-headline text-2xl flex items-center gap-2"><Lock className="h-6 w-6" /> Conteúdo Bloqueado</AlertDialogTitle>
+                            <AlertDialogDescription className="text-lg">
+                                Este bônus e mais 8 outros serão liberados em 7 dias. Fique atento!
+                            </AlertDialogDescription>
+                        </AlertDialogHeader>
+                        <AlertDialogFooter>
+                            <AlertDialogAction>Entendido</AlertDialogAction>
+                        </AlertDialogFooter>
+                    </AlertDialogContent>
+                </AlertDialog>
             </div>
         </div>
     );
