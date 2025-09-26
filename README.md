@@ -2,58 +2,63 @@
 
 Esta é uma aplicação Next.js criada no Firebase Studio. A plataforma utiliza Inteligência Artificial para corrigir redações com base nos critérios do ENEM, além de fornecer material de estudo completo.
 
-## Como Subir o Site com Vercel e GitHub
+## Como Subir o Site com Firebase App Hosting
 
-Para colocar seu site no ar de forma simples e gratuita, vamos usar a **Vercel**, que se integra perfeitamente com o **GitHub**.
+Para colocar seu site no ar de forma profissional, vamos usar o **Firebase App Hosting**, que é otimizado para aplicações Next.js como esta.
 
 ### Pré-requisitos
 
-1.  **Conta no GitHub**: Você precisa de uma conta no [GitHub](https://github.com/).
-2.  **Conta na Vercel**: Crie uma conta na [Vercel](https://vercel.com/signup) usando seu perfil do GitHub.
+1.  **Node.js**: Certifique-se de que você tem o Node.js instalado no seu computador.
+2.  **Conta no Firebase**: Você precisa de uma conta no [Firebase](https://firebase.google.com/).
 3.  **Chave de API do Gemini**: Tenha sua `GEMINI_API_KEY` em mãos.
 
 ---
 
-### Passo 1: Enviar seu Projeto para o GitHub
+### Passo 1: Instalar o Firebase CLI e Fazer Login
 
-Primeiro, você precisa criar um repositório no GitHub e enviar seu código para ele.
+Primeiro, você precisa das ferramentas de linha de comando do Firebase.
 
-1.  **Crie um novo repositório no GitHub**:
-    *   Vá para o [GitHub](https://github.com/new) e crie um novo repositório (pode ser público ou privado).
-    *   **Não** adicione `README`, `.gitignore` ou licença. Deixe-o vazio.
-
-2.  **Envie seu código local para o repositório**:
-    *   No seu terminal, na pasta do projeto, execute os seguintes comandos, substituindo `URL_DO_SEU_REPOSITORIO` pela URL que o GitHub forneceu (ex: `https://github.com/seu-usuario/nome-do-repo.git`):
+1.  **Instale o Firebase Tools**:
+    *   Abra seu terminal e execute o comando:
     ```bash
-    git init -b main
-    git add .
-    git commit -m "Primeiro commit"
-    git remote add origin URL_DO_SEU_REPOSITORIO
-    git push -u origin main
+    npm install -g firebase-tools
     ```
+
+2.  **Faça Login na sua Conta Firebase**:
+    *   No mesmo terminal, execute:
+    ```bash
+    firebase login
+    ```
+    *   Isso vai abrir uma janela no seu navegador para você autorizar o acesso à sua conta Google.
 
 ---
 
-### Passo 2: Fazer o Deploy na Vercel
+### Passo 2: Configurar o Projeto e Fazer o Deploy
 
-Agora que seu código está no GitHub, o deploy na Vercel é muito fácil.
+Agora vamos conectar seu código ao Firebase e publicá-lo.
 
-1.  **Acesse seu Dashboard na Vercel**:
-    *   Faça login na [Vercel](https://vercel.com/dashboard).
+1.  **Inicialize o Firebase App Hosting**:
+    *   No terminal, na pasta do seu projeto, execute:
+    ```bash
+    firebase apphosting:backends:create
+    ```
+    *   Siga as instruções:
+        *   Selecione o projeto Firebase correto da lista.
+        *   Escolha uma localização para o servidor (ex: `us-central1`).
 
-2.  **Importe seu Projeto**:
-    *   Clique em **"Add New... > Project"**.
-    *   Na seção **"Import Git Repository"**, encontre o repositório que você acabou de criar no GitHub e clique em **"Import"**.
+2.  **Configure a Chave de API do Gemini (Variável de Ambiente)**:
+    *   Para a IA funcionar, você precisa adicionar sua chave de API ao ambiente de produção. Execute o comando abaixo, substituindo `SUA_CHAVE_AQUI` pela sua `GEMINI_API_KEY`:
+    ```bash
+    firebase apphosting:secrets:set GEMINI_API_KEY --value=SUA_CHAVE_AQUI
+    ```
 
-3.  **Configure as Variáveis de Ambiente**:
-    *   Durante a configuração do projeto, a Vercel vai pedir para você configurar as "Environment Variables" (Variáveis de Ambiente). Isso é crucial para a IA funcionar.
-    *   Adicione uma variável com o nome `GEMINI_API_KEY`.
-    *   No campo do valor, cole a sua chave de API do Gemini.
-    *   Clique em **"Add"**.
+3.  **Faça o Deploy do Site**:
+    *   Finalmente, para construir e enviar seu site para o Firebase, execute:
+    ```bash
+    firebase apphosting:deploy
+    ```
+    *   Aguarde o processo terminar. O Firebase vai construir seu projeto Next.js, configurar o servidor e colocar tudo no ar.
 
-4.  **Faça o Deploy**:
-    *   Clique no botão **"Deploy"**. A Vercel vai automaticamente detectar que é um projeto Next.js, instalar as dependências e colocar seu site no ar.
+Ao final, o terminal mostrará a URL onde seu site está funcionando.
 
-Ao final do processo, a Vercel fornecerá a URL onde seu site está funcionando.
-
-Pronto! Seu site estará online, com a IA funcionando, e qualquer alteração que você enviar para o GitHub (usando `git push`) será automaticamente atualizada no seu site.
+Pronto! Seu site estará online, com a IA funcionando. Toda vez que você fizer uma alteração no código e quiser atualizar o site, basta executar o comando `firebase apphosting:deploy` novamente.
