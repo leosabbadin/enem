@@ -6,17 +6,25 @@ import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { Lightbulb, Loader2 } from 'lucide-react';
+import { CheckCircle, Lightbulb, ListChecks, Loader2, Target, Edit } from 'lucide-react';
+import { Separator } from '@/components/ui/separator';
 
 interface CorrectionResult {
+  resumoGeral: string;
   notaFinal: number;
-  feedbackGeral: string;
-  oQueMelhorar: string;
   competencias: {
     nome: string;
     nota: number;
-    feedback: string;
+    porque: string;
+    comoMelhorar: string;
   }[];
+  errosRecorrentes: {
+    trechoProblematico: string;
+    sugestaoReescrita: string;
+  }[];
+  propostaIntervencaoRevisada: string;
+  planoDeTreino7Dias: string[];
+  oQueMelhorar: string;
 }
 
 interface FormState {
@@ -85,9 +93,12 @@ export default function EssayCorrectionForm() {
               <p className="text-6xl font-bold text-primary font-headline">{state.result.notaFinal}</p>
             </div>
             <div>
-              <h3 className="text-2xl font-bold mb-2 font-headline">Feedback Geral</h3>
-              <p className="text-muted-foreground leading-relaxed">{state.result.feedbackGeral}</p>
+              <h3 className="text-2xl font-bold mb-2 font-headline">Resumo Geral</h3>
+              <p className="text-muted-foreground leading-relaxed">{state.result.resumoGeral}</p>
             </div>
+
+            <Separator />
+
              <div className="bg-accent/20 border-l-4 border-accent p-4 rounded-r-lg">
               <div className="flex items-start gap-3">
                 <Lightbulb className="h-6 w-6 text-accent flex-shrink-0 mt-1" />
@@ -97,6 +108,9 @@ export default function EssayCorrectionForm() {
                 </div>
               </div>
             </div>
+
+            <Separator />
+
             <div>
               <h3 className="text-2xl font-bold mb-4 font-headline">Análise por Competência</h3>
               <Accordion type="single" collapsible className="w-full" defaultValue="item-0">
@@ -108,12 +122,56 @@ export default function EssayCorrectionForm() {
                         <span className="text-primary font-bold text-lg">{c.nota}/200</span>
                       </div>
                     </AccordionTrigger>
-                    <AccordionContent className="text-muted-foreground leading-relaxed">
-                      {c.feedback}
+                    <AccordionContent className="text-muted-foreground leading-relaxed space-y-4 pt-2">
+                      <div>
+                        <h4 className="font-semibold text-foreground mb-1">Por que recebeu essa nota:</h4>
+                        <p>{c.porque}</p>
+                      </div>
+                       <div>
+                        <h4 className="font-semibold text-foreground mb-1">Como melhorar:</h4>
+                        <p>{c.comoMelhorar}</p>
+                      </div>
                     </AccordionContent>
                   </AccordionItem>
                 ))}
               </Accordion>
+            </div>
+
+            <Separator />
+
+            <div>
+              <h3 className="text-2xl font-bold mb-4 font-headline flex items-center gap-2"><Edit className="h-6 w-6" /> Erros Recorrentes e Reescritas</h3>
+              <div className="space-y-4">
+                {state.result.errosRecorrentes.map((erro, index) => (
+                  <div key={index} className="p-4 border rounded-lg bg-secondary/30">
+                    <p className="text-sm text-muted-foreground line-through">"{erro.trechoProblematico}"</p>
+                    <p className="mt-2 text-primary-foreground bg-primary p-2 rounded-md">
+                      <span className="font-bold">Sugestão:</span> "{erro.sugestaoReescrita}"
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <Separator />
+
+            <div>
+              <h3 className="text-2xl font-bold mb-2 font-headline flex items-center gap-2"><CheckCircle className="h-6 w-6" /> Proposta de Intervenção Revisada</h3>
+              <p className="text-muted-foreground leading-relaxed">{state.result.propostaIntervencaoRevisada}</p>
+            </div>
+
+             <Separator />
+
+            <div>
+              <h3 className="text-2xl font-bold mb-4 font-headline flex items-center gap-2"><ListChecks className="h-6 w-6" /> Plano de Treino para 7 Dias</h3>
+              <ul className="space-y-2">
+                {state.result.planoDeTreino7Dias.map((task, index) => (
+                  <li key={index} className="flex items-start gap-3">
+                    <Target className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
+                    <span className="text-muted-foreground"><span className="font-bold text-foreground">Dia {index + 1}:</span> {task}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           </CardContent>
         </Card>
