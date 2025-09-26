@@ -6,7 +6,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Button } from '@/components/ui/button';
-import { Gift, Lightbulb, Swords, BookCheck, CheckCircle2, ChevronRight, MessagesSquare } from 'lucide-react';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import { Gift, Lightbulb, Swords, BookCheck, CheckCircle2, ChevronRight, MessagesSquare, ClipboardCheck } from 'lucide-react';
 
 const bonusItems = [
     {
@@ -73,6 +74,51 @@ const bonusItems = [
             ],
             catchphrase: "“Repertório é arma: quem tem as frases certas vence a banca.”"
         }
+    },
+    {
+        id: 'bonus-3',
+        icon: <ClipboardCheck className="h-10 w-10 text-primary" />,
+        title: "Bônus 3 – Guia de Propostas de Intervenção",
+        description: "Aprenda a fórmula para criar propostas de intervenção perfeitas e garanta a nota máxima na Competência 5.",
+        type: 'proposals',
+        content: {
+            structure: {
+                title: 'Estrutura da Conclusão Nota 1000',
+                formula: 'Todo modelo segue a fórmula: Ação + Agente (quem) + Modo (como) + Finalidade (para quê).',
+                example: '“Portanto, cabe ao Ministério da Educação implementar programas de letramento digital, por meio da inclusão de disciplinas específicas nas escolas públicas, a fim de garantir que os jovens usem a internet de forma crítica e produtiva.”'
+            },
+            actors: {
+                title: 'Tabela de Atores Sociais',
+                headers: ['Agente (Quem)', 'Ação (O que deve fazer)', 'Finalidade (Para quê)'],
+                rows: [
+                    ['Governo Federal', 'Investir em políticas públicas', 'Reduzir desigualdades sociais'],
+                    ['Ministério da Educação (MEC)', 'Criar programas educacionais', 'Formar cidadãos críticos e preparados'],
+                    ['Ministério da Saúde', 'Promover campanhas de conscientização', 'Prevenir doenças e cuidar da saúde mental'],
+                    ['ONGs', 'Desenvolver projetos comunitários', 'Apoiar populações vulneráveis'],
+                    ['Mídia', 'Difundir informações verídicas', 'Combater fake news e promover educação midiática'],
+                    ['Família', 'Orientar e apoiar os jovens', 'Estimular valores éticos e responsabilidade'],
+                    ['Escolas e professores', 'Inserir práticas pedagógicas inovadoras', 'Melhorar o processo de aprendizagem'],
+                    ['Empresas privadas', 'Financiar iniciativas sociais', 'Cumprir responsabilidade social'],
+                    ['Sociedade civil', 'Exigir políticas mais inclusivas', 'Garantir cidadania plena']
+                ]
+            },
+            models: {
+                title: 'Modelos Prontos de Conclusão',
+                items: [
+                    { title: '1. Inclusão Digital', text: '“Portanto, cabe ao Ministério das Comunicações ampliar a infraestrutura tecnológica em áreas periféricas, por meio da instalação de fibra óptica em parceria com empresas privadas, a fim de reduzir desigualdades sociais.”' },
+                    { title: '2. Saúde Mental', text: '“Logo, é necessário que o Ministério da Saúde implemente campanhas nacionais de conscientização sobre saúde mental, utilizando veículos midiáticos de ampla circulação, para promover o bem-estar da população jovem.”' },
+                    { title: '3. Combate às Fake News', text: '“Assim, compete à mídia, em parceria com o MEC, promover programas de educação midiática nas escolas, por meio de palestras e materiais didáticos, com o objetivo de formar cidadãos críticos diante da desinformação.”' },
+                    { title: '4. Valorização da Cultura Indígena', text: '“Dessa forma, cabe ao Ministério da Cultura criar políticas de valorização das comunidades indígenas, por meio de investimentos em projetos culturais e preservação de línguas nativas, a fim de proteger a diversidade nacional.”' },
+                    { title: '5. Impacto da Inteligência Artificial', text: '“Em vista disso, o Ministério da Ciência e Tecnologia deve incentivar programas de capacitação profissional, em parceria com universidades e empresas, com o intuito de preparar trabalhadores para os desafios da automação.”' }
+                ]
+            },
+            benefits: [
+                "Nunca mais entregar conclusão vaga.",
+                "Garante os 200 pontos da Competência V.",
+                "Tem sempre modelos prontos para adaptar a qualquer tema."
+            ],
+            catchphrase: "“Quem fecha a redação com proposta sólida, abre a porta para a nota 1000.”"
+        }
     }
 ];
 
@@ -116,6 +162,50 @@ const BonusModal = ({ bonus }: { bonus: typeof bonusItems[0] }) => {
                                 </div>
                             ))}
                         </section>
+                    )}
+
+                    {bonus.type === 'proposals' && (
+                        <>
+                            <section className="space-y-4">
+                                <h3 className="text-2xl font-bold font-headline flex items-center gap-3"><ChevronRight className="h-5 w-5 text-primary" /> {bonus.content.structure.title}</h3>
+                                <div className="pl-9 space-y-3">
+                                    <p className="text-foreground/90">{bonus.content.structure.formula}</p>
+                                    <blockquote className="border-l-4 border-primary/50 pl-4 italic text-foreground/90">
+                                        {bonus.content.structure.example}
+                                    </blockquote>
+                                </div>
+                            </section>
+                            <section className="space-y-4">
+                                <h3 className="text-2xl font-bold font-headline flex items-center gap-3"><ChevronRight className="h-5 w-5 text-primary" /> {bonus.content.actors.title}</h3>
+                                <div className="pl-9">
+                                     <Table>
+                                        <TableHeader>
+                                            <TableRow>
+                                                {bonus.content.actors.headers.map((header, i) => <TableHead key={i}>{header}</TableHead>)}
+                                            </TableRow>
+                                        </TableHeader>
+                                        <TableBody>
+                                            {bonus.content.actors.rows.map((row, i) => (
+                                                <TableRow key={i}>
+                                                    {row.map((cell, j) => <TableCell key={j}>{cell}</TableCell>)}
+                                                </TableRow>
+                                            ))}
+                                        </TableBody>
+                                    </Table>
+                                </div>
+                            </section>
+                             <section className="space-y-4">
+                                <h3 className="text-2xl font-bold font-headline flex items-center gap-3"><ChevronRight className="h-5 w-5 text-primary" /> {bonus.content.models.title}</h3>
+                                <div className="pl-9 space-y-4">
+                                    {bonus.content.models.items.map((item, index) => (
+                                        <div key={index} className="p-4 border rounded-lg bg-card/50">
+                                            <h4 className="font-bold text-foreground mb-2">{item.title}</h4>
+                                            <p className="text-foreground/90 italic">"{item.text}"</p>
+                                        </div>
+                                    ))}
+                                </div>
+                            </section>
+                        </>
                     )}
 
 
