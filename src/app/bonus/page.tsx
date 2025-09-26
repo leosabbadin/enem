@@ -28,7 +28,7 @@ export default function BonusPage() {
   return (
     <div className="space-y-12">
       <section className="text-center">
-        <h1 className="text-4xl md:text-5xl font-bold font-headline mb-4 text-primary">Conteúdo Bônus</h1>
+        <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight font-headline mb-4 text-primary">Conteúdo Bônus</h1>
         <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
           Explore nossos materiais extras para refinar suas habilidades e ganhar uma vantagem competitiva.
         </p>
@@ -36,11 +36,11 @@ export default function BonusPage() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {bonusContent.map((item, index) => (
-           <Card key={index} className="hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+           <Card key={index} className="bg-card hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
             <CardHeader className="flex flex-row items-center gap-4 space-y-0">
               {item.icon}
               <div className="flex-1">
-                <CardTitle className="font-headline text-xl">{item.title}</CardTitle>
+                <CardTitle className="font-headline text-xl tracking-tight">{item.title}</CardTitle>
               </div>
             </CardHeader>
             <CardContent>

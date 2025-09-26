@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 
 export default function Header() {
   return (
-    <header className="bg-card shadow-sm sticky top-0 z-50">
+    <header className="bg-background/80 backdrop-blur-sm shadow-sm sticky top-0 z-50">
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
@@ -26,7 +26,7 @@ export default function Header() {
                 Bônus
               </Link>
             </Button>
-            <Button asChild>
+            <Button asChild className="font-bold uppercase tracking-wide">
               <Link href="/">
                 <BotMessageSquare className="mr-2 h-4 w-4" />
                 Corrigir Redação

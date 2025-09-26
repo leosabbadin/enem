@@ -37,7 +37,7 @@ const initialState: FormState = {};
 function SubmitButton() {
   const { pending } = useFormStatus();
   return (
-    <Button type="submit" size="lg" className="w-full font-bold" disabled={pending}>
+    <Button type="submit" size="lg" className="w-full font-bold uppercase tracking-wider" disabled={pending}>
       {pending ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : null}
       {pending ? 'Analisando...' : 'Corrigir Redação'}
     </Button>
@@ -49,10 +49,10 @@ export default function EssayCorrectionForm() {
 
   return (
     <div className="space-y-8">
-      <Card className="shadow-lg">
+      <Card>
         <CardHeader>
-          <CardTitle className="font-headline text-2xl">Área de Correção</CardTitle>
-          <CardDescription>Cole sua redação abaixo e clique em "Corrigir Redação" para obter sua análise completa.</CardDescription>
+          <CardTitle className="font-headline text-2xl tracking-tight">Área de Correção</CardTitle>
+          <CardDescription>Cole sua redação abaixo para obter sua análise completa.</CardDescription>
         </CardHeader>
         <CardContent>
           <form action={formAction}>
@@ -76,34 +76,34 @@ export default function EssayCorrectionForm() {
             <CardTitle className="text-destructive font-headline">Ocorreu um Erro</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-destructive-foreground">{state.error}</p>
+            <p>{state.error}</p>
           </CardContent>
         </Card>
       )}
 
       {state.result && (
-        <Card className="shadow-lg animate-in fade-in-50 duration-500">
+        <Card className="animate-in fade-in-50 duration-500">
           <CardHeader>
-            <CardTitle className="font-headline text-3xl">Resultado da Correção</CardTitle>
+            <CardTitle className="font-headline text-3xl tracking-tight">Resultado da Correção</CardTitle>
             <CardDescription>Aqui está o feedback detalhado para sua redação.</CardDescription>
           </CardHeader>
           <CardContent className="space-y-6">
-            <div className="text-center bg-muted p-6 rounded-lg">
+            <div className="text-center bg-card-foreground p-6 rounded-lg">
               <p className="text-lg text-muted-foreground font-headline">Nota Final</p>
               <p className="text-6xl font-bold text-primary font-headline">{state.result.notaFinal}</p>
             </div>
             <div>
-              <h3 className="text-2xl font-bold mb-2 font-headline">Resumo Geral</h3>
+              <h3 className="text-2xl font-bold mb-2 font-headline tracking-tight">Resumo Geral</h3>
               <p className="text-muted-foreground leading-relaxed">{state.result.resumoGeral}</p>
             </div>
 
             <Separator />
 
-             <div className="bg-accent/20 border-l-4 border-accent p-4 rounded-r-lg">
+             <div className="bg-primary/10 border-l-4 border-primary p-4 rounded-r-lg">
               <div className="flex items-start gap-3">
-                <Lightbulb className="h-6 w-6 text-accent flex-shrink-0 mt-1" />
+                <Lightbulb className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
                 <div>
-                  <h3 className="text-xl font-bold mb-2 font-headline text-accent-foreground">O que Melhorar?</h3>
+                  <h3 className="text-xl font-bold mb-2 font-headline text-primary-foreground tracking-tight">O que Melhorar?</h3>
                   <p className="text-muted-foreground leading-relaxed">{state.result.oQueMelhorar}</p>
                 </div>
               </div>
@@ -112,7 +112,7 @@ export default function EssayCorrectionForm() {
             <Separator />
 
             <div>
-              <h3 className="text-2xl font-bold mb-4 font-headline">Análise por Competência</h3>
+              <h3 className="text-2xl font-bold mb-4 font-headline tracking-tight">Análise por Competência</h3>
               <Accordion type="single" collapsible className="w-full" defaultValue="item-0">
                 {state.result.competencias.map((c, index) => (
                   <AccordionItem value={`item-${index}`} key={index}>
@@ -140,12 +140,12 @@ export default function EssayCorrectionForm() {
             <Separator />
 
             <div>
-              <h3 className="text-2xl font-bold mb-4 font-headline flex items-center gap-2"><Edit className="h-6 w-6" /> Erros Recorrentes e Reescritas</h3>
+              <h3 className="text-2xl font-bold mb-4 font-headline flex items-center gap-2 tracking-tight"><Edit className="h-6 w-6" /> Erros Recorrentes e Reescritas</h3>
               <div className="space-y-4">
                 {state.result.errosRecorrentes.map((erro, index) => (
                   <div key={index} className="p-4 border rounded-lg bg-secondary/30">
                     <p className="text-sm text-muted-foreground line-through">"{erro.trechoProblematico}"</p>
-                    <p className="mt-2 text-primary-foreground bg-primary p-2 rounded-md">
+                    <p className="mt-2 text-primary-foreground bg-primary/90 p-2 rounded-md">
                       <span className="font-bold">Sugestão:</span> "{erro.sugestaoReescrita}"
                     </p>
                   </div>
@@ -156,7 +156,7 @@ export default function EssayCorrectionForm() {
             <Separator />
             
             <div>
-              <h3 className="text-2xl font-bold mb-4 font-headline flex items-center gap-2"><ListChecks className="h-6 w-6" /> Plano de Treino para 7 Dias</h3>
+              <h3 className="text-2xl font-bold mb-4 font-headline flex items-center gap-2 tracking-tight"><ListChecks className="h-6 w-6" /> Plano de Treino para 7 Dias</h3>
               <ul className="space-y-2">
                 {state.result.planoDeTreino7Dias.map((task, index) => (
                   <li key={index} className="flex items-start gap-3">

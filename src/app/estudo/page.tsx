@@ -28,7 +28,7 @@ export default function EstudoPage() {
   return (
     <div className="space-y-12">
       <section className="text-center">
-        <h1 className="text-4xl md:text-5xl font-bold font-headline mb-4 text-primary">Capítulos de Estudo</h1>
+        <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight font-headline mb-4 text-primary">Capítulos de Estudo</h1>
         <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
           Navegue pelos capítulos para dominar cada aspecto da redação do ENEM, do básico ao avançado.
         </p>
@@ -36,11 +36,11 @@ export default function EstudoPage() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {studyChapters.map((chapter, index) => (
-          <Card key={index} className="hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+          <Card key={index} className="bg-card hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
             <CardHeader className="flex flex-row items-center gap-4 space-y-0">
               {chapter.icon}
               <div className="flex-1">
-                <CardTitle className="font-headline text-xl">{chapter.title}</CardTitle>
+                <CardTitle className="font-headline text-xl tracking-tight">{chapter.title}</CardTitle>
               </div>
             </CardHeader>
             <CardContent>
