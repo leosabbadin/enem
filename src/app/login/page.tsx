@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState } from 'react';
@@ -23,9 +24,26 @@ export default function LoginPage() {
     e.preventDefault();
     setLoading(true);
     try {
-      await signInWithEmailAndPassword(auth, email, password);
-      router.push('/');
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      const idToken = await userCredential.user.getIdToken();
+
+      // Send the token to the server to create a session cookie
+      const response = await fetch('/api/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ idToken }),
+      });
+
+      if (response.ok) {
+        router.push('/');
+      } else {
+        throw new Error('Failed to create session');
+      }
+
     } catch (error) {
+      console.error(error);
       toast({
         title: 'Erro de Login',
         description: 'Verifique seu e-mail e senha e tente novamente.',

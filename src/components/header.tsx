@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from 'next/link';
@@ -15,7 +16,11 @@ export default function Header() {
   const router = useRouter();
 
   const handleLogout = async () => {
+    // Call the server-side logout endpoint
+    await fetch('/api/logout', { method: 'POST' });
+    // Sign out from the client-side Firebase instance
     await signOut(auth);
+    // Redirect to login page
     router.push('/login');
   };
   
