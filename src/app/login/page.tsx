@@ -12,6 +12,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter }
 import { useToast } from '@/hooks/use-toast';
 import Link from 'next/link';
 import { Loader2 } from 'lucide-react';
+import type { FirebaseError } from 'firebase/app';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
@@ -24,10 +25,11 @@ export default function LoginPage() {
     e.preventDefault();
     setLoading(true);
     try {
+      // 1. Authenticate with Firebase on the client
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       const idToken = await userCredential.user.getIdToken();
 
-      // Send the token to the server to create a session cookie
+      // 2. Send the token to the server to create a session cookie
       const response = await fetch('/api/login', {
         method: 'POST',
         headers: {
@@ -36,17 +38,41 @@ export default function LoginPage() {
         body: JSON.stringify({ idToken }),
       });
 
-      if (response.ok) {
-        router.push('/');
-      } else {
-        throw new Error('Failed to create session');
+      // 3. Check if server-side session was created
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Falha ao criar a sessão no servidor.');
       }
 
+      // 4. Redirect on success
+      router.push('/');
+
     } catch (error) {
-      console.error(error);
+      console.error("Login Error:", error);
+      let title = 'Erro de Login';
+      let description = 'Ocorreu um erro inesperado. Tente novamente mais tarde.';
+
+      const firebaseError = error as FirebaseError;
+      if (firebaseError.code) {
+          switch (firebaseError.code) {
+              case 'auth/user-not-found':
+              case 'auth/wrong-password':
+              case 'auth/invalid-credential':
+                  title = 'Credenciais Inválidas';
+                  description = 'Verifique seu e-mail e senha e tente novamente.';
+                  break;
+              default:
+                  title = 'Erro de Autenticação';
+                  description = firebaseError.message;
+                  break;
+          }
+      } else if (error instanceof Error) {
+        description = error.message;
+      }
+
       toast({
-        title: 'Erro de Login',
-        description: 'Verifique seu e-mail e senha e tente novamente.',
+        title: title,
+        description: description,
         variant: 'destructive',
       });
     } finally {
