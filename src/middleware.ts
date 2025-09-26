@@ -2,20 +2,26 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 import { adminAuth } from './lib/firebase-admin';
-import { getDatabase, ref, get } from 'firebase/database';
+import { getDatabase } from 'firebase-admin/database';
+
+// Force the middleware to run on the Node.js runtime
+export const runtime = 'nodejs';
 
 async function verifySession(sessionCookie: string) {
   try {
     const decodedToken = await adminAuth.verifySessionCookie(sessionCookie, true);
+    // Use the Admin SDK to get a reference to the database
     const db = getDatabase();
-    const sessionRef = ref(db, `sessions/${decodedToken.uid}`);
-    const snapshot = await get(sessionRef);
+    const sessionRef = db.ref(`sessions/${decodedToken.uid}`);
+    const snapshot = await sessionRef.once('value');
 
     if (snapshot.exists()) {
+      // Here you might want to compare session IDs if you stored one
       return decodedToken;
     }
     return null;
   } catch (error) {
+    console.error('Error verifying session in middleware:', error);
     return null;
   }
 }

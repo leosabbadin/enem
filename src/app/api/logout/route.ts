@@ -2,7 +2,7 @@
 import { cookies } from 'next/headers';
 import { NextResponse } from 'next/server';
 import { adminAuth } from '@/lib/firebase-admin';
-import { getDatabase, ref, remove } from 'firebase/database';
+import { getDatabase } from 'firebase-admin/database';
 
 export async function POST() {
   const sessionCookie = cookies().get('session')?.value;
@@ -14,7 +14,7 @@ export async function POST() {
     // Clear the session from the database
     const decodedToken = await adminAuth.verifySessionCookie(sessionCookie);
     const db = getDatabase();
-    await remove(ref(db, `sessions/${decodedToken.uid}`));
+    await db.ref(`sessions/${decodedToken.uid}`).remove();
 
     // Clear the cookies
     cookies().delete('session');

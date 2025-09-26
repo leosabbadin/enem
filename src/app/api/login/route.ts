@@ -1,8 +1,8 @@
 
 import { NextRequest, NextResponse } from 'next/server';
-import { auth, adminAuth } from '@/lib/firebase-admin';
+import { adminAuth } from '@/lib/firebase-admin';
 import { cookies } from 'next/headers';
-import { getDatabase, ref, set } from 'firebase/database';
+import { getDatabase } from 'firebase-admin/database';
 
 export async function POST(req: NextRequest) {
   const { idToken } = await req.json();
@@ -21,7 +21,7 @@ export async function POST(req: NextRequest) {
     // Generate a unique session ID and store it in the Realtime Database
     const sessionId = Date.now().toString();
     const db = getDatabase();
-    await set(ref(db, `sessions/${uid}`), { sessionId });
+    await db.ref(`sessions/${uid}`).set({ sessionId });
 
     const options = {
       name: 'session',
