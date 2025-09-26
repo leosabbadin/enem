@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { BookOpen, BotMessageSquare, Menu, PenSquare, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet';
+import { ThemeToggle } from './theme-toggle';
 
 export default function Header() {
   return (
@@ -35,10 +36,12 @@ export default function Header() {
                 Corrigir Redação
               </Link>
             </Button>
+            <ThemeToggle />
           </div>
 
           {/* Mobile Navigation */}
-          <div className="md:hidden">
+          <div className="md:hidden flex items-center gap-2">
+             <ThemeToggle />
             <Sheet>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon">
