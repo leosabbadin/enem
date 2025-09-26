@@ -27,6 +27,9 @@ export default function SignupPage() {
               Solicitar Acesso no WhatsApp
             </a>
           </Button>
+          <p className="text-sm text-muted-foreground font-semibold">
+            (62) 99656-4956 e nos envie seu E-mail!
+          </p>
         </CardContent>
         <CardFooter className="flex-col text-center text-sm gap-4">
            <p className="w-full text-muted-foreground">
