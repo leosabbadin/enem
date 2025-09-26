@@ -24,7 +24,11 @@ export default function SignupPage() {
     setLoading(true);
     try {
       await createUserWithEmailAndPassword(auth, email, password);
-      router.push('/');
+      toast({
+        title: 'Cadastro realizado com sucesso!',
+        description: 'Agora você pode fazer o login com suas credenciais.',
+      });
+      router.push('/login'); // Redirect to login page
     } catch (error) {
        toast({
         title: 'Erro no Cadastro',
