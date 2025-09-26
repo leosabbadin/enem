@@ -93,7 +93,7 @@ export default function LoginPage() {
         </CardContent>
         <CardFooter className="text-center text-sm">
           <p className="w-full">
-            Não tem uma conta?{' '}
+            Adquiriu o Método?{' '}
             <Link href="/signup" className="text-primary hover:underline font-semibold">
               Cadastre-se
             </Link>
