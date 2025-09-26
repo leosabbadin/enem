@@ -1,6 +1,7 @@
 'use client';
 
-import { useFormState, useFormStatus } from 'react-dom';
+import { useActionState } from 'react';
+import { useFormStatus } from 'react-dom';
 import { correctEssayAction } from './actions';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
@@ -45,7 +46,7 @@ function SubmitButton() {
 }
 
 export default function EssayCorrectionForm() {
-  const [state, formAction] = useFormState(correctEssayAction, initialState);
+  const [state, formAction] = useActionState(correctEssayAction, initialState);
 
   return (
     <div className="space-y-8">
