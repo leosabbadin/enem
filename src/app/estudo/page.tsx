@@ -6,7 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { CheckCircle2, BookCopy, ChevronRight, GraduationCap, History, Target, PenTool, Swords, Crown, BrainCircuit } from 'lucide-react';
+import { CheckCircle2, BookCopy, ChevronRight, GraduationCap, History, Target, PenTool, Swords, Crown, BrainCircuit, Blocks } from 'lucide-react';
 
 const studyContent = {
   mainTitle: "Capítulos de Estudo",
@@ -22,12 +22,12 @@ const studyContent = {
           title: "Como o ENEM Corrige sua Redação",
           icon: <GraduationCap className="h-6 w-6 text-primary" />,
           content: [
-            { 
+            {
               type: 'paragraph',
               title: 'Explicação',
-              text: 'A redação é corrigida por 2 avaliadores diferentes, cada um pode dar até 200 pontos em 5 competências. Se houver diferença grande, entra um terceiro corretor. A nota final é a média.' 
+              text: 'A redação é corrigida por 2 avaliadores diferentes, cada um pode dar até 200 pontos em 5 competências. Se houver diferença grande, entra um terceiro corretor. A nota final é a média.'
             },
-            { 
+            {
               type: 'list',
               title: 'As 5 Competências:',
               items: [
@@ -36,17 +36,17 @@ const studyContent = {
                 'Seleção e Organização de Argumentos – coerência, defesa clara de uma tese.',
                 'Coesão e Coerência – conectores, progressão de ideias.',
                 'Proposta de Intervenção – solução detalhada: quem faz, como faz, para quê.'
-              ] 
+              ]
             },
-            { 
+            {
               type: 'examples',
               title: 'Exemplos de erro que derrubam nota:',
               items: [
                 { label: 'Competência 2', text: 'Tema “saúde mental” e o aluno fala só sobre “COVID”. → Fuga parcial.' },
                 { label: 'Competência 5', text: 'Proposta vaga → “O governo deve melhorar a educação.” (sem como).' }
-              ] 
+              ]
             },
-            { 
+            {
               type: 'exercise',
               title: 'Exercício',
               text: 'Leia o tema “Desafios para combater a violência escolar no Brasil”.\n👉 Escreva em uma frase qual seria sua tese principal.'
@@ -57,7 +57,7 @@ const studyContent = {
           title: "A Estrutura que Nunca Falha",
           icon: <BookCopy className="h-6 w-6 text-primary" />,
           content: [
-            { 
+            {
               type: 'list',
               title: 'Estrutura padrão:',
               items: [
@@ -77,7 +77,7 @@ const studyContent = {
               title: 'Fórmula da conclusão:',
               text: '“Portanto, é essencial que [ator social] promova [ação], por meio de [meio detalhado], com o objetivo de [finalidade]. Assim, será possível [impacto positivo].”'
             },
-            { 
+            {
               type: 'exercise',
               title: 'Exercício',
               text: 'Monte uma introdução para o tema “O impacto das redes sociais na democracia brasileira”.'
@@ -264,6 +264,96 @@ const studyContent = {
         ],
         catchphrase: '“Quem domina repertório, domina a banca.”'
       }
+    },
+    {
+      id: 'chapter-3',
+      title: "Capítulo 3 – Estrutura de Argumentos Irresistíveis",
+      description: "Construa parágrafos que são verdadeiras máquinas de pontuação, seguindo uma fórmula clara e eficaz.",
+      icon: <Blocks className="h-10 w-10 text-primary" />,
+      subchapters: [
+        {
+          title: "Fórmula do parágrafo de desenvolvimento",
+          icon: <PenTool className="h-6 w-6 text-primary" />,
+          content: [
+            { type: 'paragraph', title: 'Um parágrafo forte segue a fórmula:', text: '' },
+            {
+              type: 'list', title: '', items: [
+                'Tópico frasal (tese do parágrafo) → Frase curta que apresenta o argumento.',
+                'Explicação/Contextualização → Aprofunda a ideia inicial.',
+                'Repertório (autor, dado, história, lei, filme, série) → Dá legitimidade ao argumento.',
+                'Mini conclusão (amarra o raciocínio) → Mostra como o argumento se conecta ao tema.',
+              ]
+            }
+          ]
+        },
+        {
+          title: "Exemplo prático",
+          icon: <GraduationCap className="h-6 w-6 text-primary" />,
+          content: [
+            { type: 'quote', title: 'Tema: “Os desafios da inclusão digital no Brasil”', text: 'Em primeiro lugar, a falta de infraestrutura tecnológica é um dos principais fatores que dificultam a inclusão digital no Brasil. Em regiões mais afastadas, a ausência de internet de qualidade impede que estudantes e trabalhadores participem ativamente da sociedade digital. Segundo relatório da ONU (2021), cerca de 40% da população mundial ainda não possui acesso regular à internet, o que agrava desigualdades sociais. Assim, enquanto parte da população avança no ambiente digital, outra permanece excluída, ampliando a desigualdade.' },
+          ]
+        },
+        {
+          title: "Modelos de Tópicos Frasais (para começar bem)",
+          icon: <BookCopy className="h-6 w-6 text-primary" />,
+          content: [
+            { type: 'list', title: '', items: [
+                '“Em primeiro lugar, [problema central] é um dos fatores que dificultam [tema].”',
+                '“Além disso, destaca-se [problema central], que compromete [impacto].”',
+                '“Outro aspecto importante é [problema central], pois [explicação breve].”',
+            ] },
+            { type: 'paragraph', title: '', text: '👉 Só de variar essas frases, o aluno evita começar sempre igual e ganha ponto de coesão.' },
+          ]
+        },
+        {
+          title: "Tipos de repertório aplicáveis",
+          icon: <History className="h-6 w-6 text-primary" />,
+          content: [
+            {
+              type: 'list', title: '', items: [
+                'Autoridade: filósofos, sociólogos, economistas (Bauman, Durkheim, Foucault).',
+                'Histórico: Iluminismo, Revolução Industrial, Constituição de 1988.',
+                'Dados: IBGE, UNESCO, ONU, relatórios oficiais.',
+                'Cultural: filmes, séries, músicas, literatura.',
+                'Atualidade: notícias recentes (ex.: IA no mercado de trabalho, fake news).',
+              ]
+            }
+          ]
+        },
+        {
+          title: "Exercícios práticos",
+          icon: <Target className="h-6 w-6 text-primary" />,
+          content: [
+            { type: 'exercise', title: '', text: 'Monte um parágrafo de desenvolvimento sobre “Violência escolar no Brasil”, usando Durkheim como repertório.' },
+            { type: 'exercise', title: '', text: 'Escreva um tópico frasal para o tema “Inteligência artificial e mercado de trabalho”.' },
+            { type: 'exercise', title: '', text: 'Use um evento histórico (Revolução Industrial) em um parágrafo sobre “Desafios da automação no Brasil”.' },
+            { type: 'exercise', title: '', text: 'Crie uma mini conclusão conectando um dado estatístico ao tema “Saúde mental na juventude”.' },
+          ]
+        },
+        {
+          title: "Checklist do Parágrafo Irresistível",
+          icon: <CheckCircle2 className="h-6 w-6 text-primary" />,
+          content: [
+            { type: 'list', title: '', items: [
+                '✅ Tem tópico frasal claro?',
+                '✅ Aprofundou a ideia com explicação?',
+                '✅ Usou repertório válido e conectado?',
+                '✅ Fechou com mini conclusão que amarra?',
+            ] },
+            { type: 'paragraph', title: '', text: 'Se 4x sim, esse parágrafo é máquina de nota.' },
+          ]
+        },
+      ],
+      summary: {
+        title: 'Resumo Aristocrata',
+        icon: <Crown className="h-6 w-6 text-primary" />,
+        points: [
+          'Parágrafo não é enrolação: é argumento com arma na mão.',
+          'Cada desenvolvimento deve ser uma muralha contra a caneta vermelha.',
+          'Fórmula salva do branco, repertório dá peso, mini conclusão garante ponto.',
+        ],
+        catchphrase: '“Quem domina um parágrafo, domina a redação inteira.”'
+      }
     }
   ]
 };
@@ -385,7 +475,7 @@ export default function EstudoPage() {
         {studyContent.chapters.map((chapter) => (
             <Dialog key={chapter.id} onOpenChange={(isOpen) => !isOpen && setOpenChapter(null)}>
                 <DialogTrigger asChild>
-                    <Card 
+                    <Card
                         className="bg-card hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer flex flex-col"
                         onClick={() => setOpenChapter(chapter.id)}
                     >
@@ -409,3 +499,5 @@ export default function EstudoPage() {
     </div>
   );
 }
+
+    
