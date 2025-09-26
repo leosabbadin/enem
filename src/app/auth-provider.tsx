@@ -41,17 +41,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }, [user, loading, pathname, router]);
 
 
-  if (loading) {
-     return (
-      <div className="flex items-center justify-center h-screen">
-        <Loader2 className="h-12 w-12 animate-spin text-primary" />
-      </div>
-    );
-  }
-  
   const isAuthPage = pathname === '/login' || pathname === '/signup';
-  if (!user && !isAuthPage) {
-    return (
+  const showLoader = loading || (!user && !isAuthPage);
+
+  if (showLoader) {
+     return (
       <div className="flex items-center justify-center h-screen">
         <Loader2 className="h-12 w-12 animate-spin text-primary" />
       </div>
