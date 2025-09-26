@@ -1,10 +1,42 @@
+'use client';
+
 import Link from 'next/link';
-import { BookOpen, BotMessageSquare, Menu, PenSquare, Sparkles } from 'lucide-react';
+import { BookOpen, BotMessageSquare, Menu, PenSquare, Sparkles, LogOut } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet';
 import { ThemeToggle } from './theme-toggle';
+import { useAuth } from '@/app/auth-provider';
+import { auth } from '@/lib/firebase';
+import { signOut } from 'firebase/auth';
+import { useRouter } from 'next/navigation';
 
 export default function Header() {
+  const { user } = useAuth();
+  const router = useRouter();
+
+  const handleLogout = async () => {
+    await signOut(auth);
+    router.push('/login');
+  };
+  
+  // Render null or a placeholder if auth state is loading and user is not determined yet
+  if (user === undefined) {
+    return (
+       <header className="bg-background/80 backdrop-blur-sm shadow-sm sticky top-0 z-50">
+        <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16">
+             <div className="flex items-center">
+              <Link href="/" className="flex items-center gap-2 text-xl font-headline font-bold text-primary">
+                <PenSquare className="h-7 w-7" />
+                <span>Hackeando a Redação</span>
+              </Link>
+            </div>
+          </div>
+        </nav>
+      </header>
+    )
+  }
+
   return (
     <header className="bg-background/80 backdrop-blur-sm shadow-sm sticky top-0 z-50">
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -17,68 +49,84 @@ export default function Header() {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-1">
-            <Button variant="ghost" asChild>
-              <Link href="/estudo">
-                <BookOpen className="mr-2 h-4 w-4" />
-                Estudo
-              </Link>
-            </Button>
-            <Button variant="ghost" asChild>
-              <Link href="/bonus">
-                <Sparkles className="mr-2 h-4 w-4" />
-                Bônus
-              </Link>
-            </Button>
-            <Button asChild className="font-bold uppercase tracking-wide">
-              <Link href="/">
-                <BotMessageSquare className="mr-2 h-4 w-4" />
-                Corrigir Redação
-              </Link>
-            </Button>
-            <ThemeToggle />
-          </div>
+          {user && (
+            <div className="hidden md:flex items-center space-x-1">
+              <Button variant="ghost" asChild>
+                <Link href="/estudo">
+                  <BookOpen className="mr-2 h-4 w-4" />
+                  Estudo
+                </Link>
+              </Button>
+              <Button variant="ghost" asChild>
+                <Link href="/bonus">
+                  <Sparkles className="mr-2 h-4 w-4" />
+                  Bônus
+                </Link>
+              </Button>
+              <Button asChild className="font-bold uppercase tracking-wide">
+                <Link href="/">
+                  <BotMessageSquare className="mr-2 h-4 w-4" />
+                  Corrigir Redação
+                </Link>
+              </Button>
+              <Button variant="outline" size="icon" onClick={handleLogout}>
+                <LogOut className="h-4 w-4" />
+                <span className="sr-only">Sair</span>
+              </Button>
+              <ThemeToggle />
+            </div>
+          )}
+
 
           {/* Mobile Navigation */}
-          <div className="md:hidden flex items-center gap-2">
-             <ThemeToggle />
-            <Sheet>
-              <SheetTrigger asChild>
-                <Button variant="ghost" size="icon">
-                  <Menu className="h-6 w-6" />
-                  <span className="sr-only">Abrir menu</span>
-                </Button>
-              </SheetTrigger>
-              <SheetContent side="right" className="w-[250px] sm:w-[300px]">
-                <div className="flex flex-col space-y-4 pt-8">
-                  <SheetClose asChild>
-                    <Button variant="ghost" asChild className="justify-start text-lg">
-                      <Link href="/estudo">
-                        <BookOpen className="mr-3 h-5 w-5" />
-                        Estudo
-                      </Link>
-                    </Button>
-                  </SheetClose>
-                  <SheetClose asChild>
-                    <Button variant="ghost" asChild className="justify-start text-lg">
-                      <Link href="/bonus">
-                        <Sparkles className="mr-3 h-5 w-5" />
-                        Bônus
-                      </Link>
-                    </Button>
-                  </SheetClose>
-                   <SheetClose asChild>
-                    <Button asChild className="text-lg justify-start px-0">
-                      <Link href="/" className='px-4'>
-                        <BotMessageSquare className="mr-3 h-5 w-5" />
-                        Corrigir Redação
-                      </Link>
-                    </Button>
-                  </SheetClose>
-                </div>
-              </SheetContent>
-            </Sheet>
-          </div>
+           {user && (
+            <div className="md:hidden flex items-center gap-2">
+              <ThemeToggle />
+              <Sheet>
+                <SheetTrigger asChild>
+                  <Button variant="ghost" size="icon">
+                    <Menu className="h-6 w-6" />
+                    <span className="sr-only">Abrir menu</span>
+                  </Button>
+                </SheetTrigger>
+                <SheetContent side="right" className="w-[250px] sm:w-[300px]">
+                  <div className="flex flex-col space-y-4 pt-8">
+                    <SheetClose asChild>
+                      <Button variant="ghost" asChild className="justify-start text-lg">
+                        <Link href="/estudo">
+                          <BookOpen className="mr-3 h-5 w-5" />
+                          Estudo
+                        </Link>
+                      </Button>
+                    </SheetClose>
+                    <SheetClose asChild>
+                      <Button variant="ghost" asChild className="justify-start text-lg">
+                        <Link href="/bonus">
+                          <Sparkles className="mr-3 h-5 w-5" />
+                          Bônus
+                        </Link>
+                      </Button>
+                    </SheetClose>
+                    <SheetClose asChild>
+                      <Button asChild className="text-lg justify-start px-0">
+                        <Link href="/" className='px-4'>
+                          <BotMessageSquare className="mr-3 h-5 w-5" />
+                          Corrigir Redação
+                        </Link>
+                      </Button>
+                    </SheetClose>
+                     <SheetClose asChild>
+                        <Button variant="ghost" onClick={handleLogout} className="justify-start text-lg">
+                          <LogOut className="mr-3 h-5 w-5" />
+                          Sair
+                        </Button>
+                    </SheetClose>
+                  </div>
+                </SheetContent>
+              </Sheet>
+            </div>
+           )}
+           {!user && <ThemeToggle />}
         </div>
       </nav>
     </header>
