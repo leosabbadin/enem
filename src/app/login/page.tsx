@@ -41,6 +41,7 @@ export default function LoginPage() {
       // 3. Check if server-side session was created
       if (!response.ok) {
         const errorData = await response.json();
+        // This will now throw a more specific error from the server
         throw new Error(errorData.error || 'Falha ao criar a sessão no servidor.');
       }
 
@@ -52,22 +53,31 @@ export default function LoginPage() {
       let title = 'Erro de Login';
       let description = 'Ocorreu um erro inesperado. Tente novamente mais tarde.';
 
-      const firebaseError = error as FirebaseError;
-      if (firebaseError.code) {
+      if (error instanceof Error) {
+        // Check for specific Firebase client-side errors
+        const firebaseError = error as FirebaseError;
+        if (firebaseError.code) {
           switch (firebaseError.code) {
-              case 'auth/user-not-found':
-              case 'auth/wrong-password':
-              case 'auth/invalid-credential':
-                  title = 'Credenciais Inválidas';
-                  description = 'Verifique seu e-mail e senha e tente novamente.';
-                  break;
-              default:
-                  title = 'Erro de Autenticação';
-                  description = firebaseError.message;
-                  break;
+            case 'auth/user-not-found':
+            case 'auth/wrong-password':
+            case 'auth/invalid-credential':
+              title = 'Credenciais Inválidas';
+              description = 'Verifique seu e-mail e senha e tente novamente.';
+              break;
+            default:
+              title = 'Erro de Autenticação';
+              description = firebaseError.message;
+              break;
           }
-      } else if (error instanceof Error) {
-        description = error.message;
+        } else {
+            // Handle server-side errors or other generic errors
+            if (error.message.includes('Session creation failed')) {
+                 title = 'Erro no Servidor';
+                 description = 'Não foi possível iniciar sua sessão. Por favor, contate o suporte.';
+            } else {
+                description = error.message;
+            }
+        }
       }
 
       toast({
@@ -121,7 +131,7 @@ export default function LoginPage() {
           <p className="w-full">
             Adquiriu o Método?{' '}
             <Link href="/signup" className="text-primary hover:underline font-semibold">
-              Cadastre-se
+              Solicite seu acesso
             </Link>
           </p>
         </CardFooter>

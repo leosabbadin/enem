@@ -1,56 +1,31 @@
 
 import * as admin from 'firebase-admin';
 
-// Interface para a conta de serviço para garantir a tipagem correta
-interface ServiceAccount {
-  type: string;
-  project_id: string;
-  private_key_id: string;
-  private_key: string;
-  client_email: string;
-  client_id: string;
-  auth_uri: string;
-  token_uri: string;
-  auth_provider_x509_cert_url: string;
-  client_x509_cert_url: string;
-  universe_domain: string;
-}
-
-let adminAuth: admin.auth.Auth | null = null;
-
-function initializeFirebaseAdmin() {
-  // Evita reinicializações desnecessárias
+// Function to safely initialize Firebase Admin SDK and get the Auth instance.
+// This prevents re-initialization errors in serverless environments.
+function getAdminAuth(): admin.auth.Auth {
   if (admin.apps.length > 0) {
-    adminAuth = admin.auth();
-    return;
+    return admin.auth();
   }
 
   const serviceAccountString = process.env.FIREBASE_SERVICE_ACCOUNT_KEY;
-
   if (!serviceAccountString) {
-    console.error('A variável de ambiente FIREBASE_SERVICE_ACCOUNT_KEY não está definida ou está vazia.');
-    return;
+    throw new Error('The FIREBASE_SERVICE_ACCOUNT_KEY environment variable is not set.');
   }
 
   try {
-    const serviceAccount: ServiceAccount = JSON.parse(serviceAccountString);
-
+    const serviceAccount = JSON.parse(serviceAccountString);
     admin.initializeApp({
       credential: admin.credential.cert(serviceAccount),
-      databaseURL: `https://`+ process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID +`.firebaseio.com`,
+      databaseURL: `https://` + process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID + `.firebaseio.com`,
     });
-    
-    adminAuth = admin.auth();
-    console.log("Firebase Admin SDK inicializado com sucesso.");
-
+    console.log("Firebase Admin SDK initialized successfully.");
+    return admin.auth();
   } catch (error) {
-    console.error('Erro ao inicializar o Firebase Admin SDK:', error);
-    // Zera o adminAuth em caso de erro para evitar uso de uma instância inválida
-    adminAuth = null; 
+    console.error('Error initializing Firebase Admin SDK:', error);
+    // Re-throw the error to be caught by the API route
+    throw new Error('Could not initialize Firebase Admin SDK.');
   }
 }
 
-// Inicializa na primeira vez que o módulo é importado
-initializeFirebaseAdmin();
-
-export { adminAuth };
+export const adminAuth = getAdminAuth;
