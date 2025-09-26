@@ -222,12 +222,12 @@ const renderContent = (contentItem: any, index: number) => {
       return (
         <div key={index} className="mt-6 p-4 border-l-4 border-primary bg-primary/10 rounded-r-md">
             <h4 className="font-bold text-primary mb-2">{contentItem.title}</h4>
-            <p className="text-muted-foreground whitespace-pre-line">{contentItem.text}</p>
+            <p className="text-foreground/90 whitespace-pre-line">{contentItem.text}</p>
         </div>
       );
     case 'quote':
         return (
-            <blockquote key={index} className="mt-4 border-l-4 border-border pl-4 italic text-muted-foreground">
+            <blockquote key={index} className="mt-4 border-l-4 border-border pl-4 italic text-foreground/80">
                 <h4 className="font-bold text-foreground not-italic mb-2">{contentItem.title}</h4>
                 <p className="whitespace-pre-line">{contentItem.text}</p>
             </blockquote>
@@ -291,7 +291,7 @@ export default function EstudoPage() {
     <div className="space-y-12">
       <section className="text-center">
         <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight font-headline mb-4 text-primary">{firstChapter.mainTitle}</h1>
-        <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
+        <p className="text-lg md:text-xl text-foreground/90 max-w-3xl mx-auto">
             {firstChapter.mainDescription}
         </p>
       </section>
@@ -322,5 +322,3 @@ export default function EstudoPage() {
     </div>
   );
 }
-
-    

@@ -89,12 +89,12 @@ export default function EssayCorrectionForm() {
           </CardHeader>
           <CardContent className="space-y-6">
             <div className="text-center bg-card-foreground p-6 rounded-lg">
-              <p className="text-lg text-muted-foreground font-headline">Nota Final</p>
+              <p className="text-lg text-muted font-headline">Nota Final</p>
               <p className="text-6xl font-bold text-primary font-headline">{state.result.notaFinal}</p>
             </div>
             <div>
               <h3 className="text-2xl font-bold mb-2 font-headline tracking-tight">Resumo Geral</h3>
-              <p className="text-muted-foreground leading-relaxed">{state.result.resumoGeral}</p>
+              <p className="text-foreground/90 leading-relaxed">{state.result.resumoGeral}</p>
             </div>
 
             <Separator />
@@ -104,7 +104,7 @@ export default function EssayCorrectionForm() {
                 <Lightbulb className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
                 <div>
                   <h3 className="text-xl font-bold mb-2 font-headline text-primary-foreground tracking-tight">O que Melhorar?</h3>
-                  <p className="text-muted-foreground leading-relaxed">{state.result.oQueMelhorar}</p>
+                  <p className="text-foreground/90 leading-relaxed">{state.result.oQueMelhorar}</p>
                 </div>
               </div>
             </div>
@@ -122,7 +122,7 @@ export default function EssayCorrectionForm() {
                         <span className="text-primary font-bold text-lg">{c.nota}/200</span>
                       </div>
                     </AccordionTrigger>
-                    <AccordionContent className="text-muted-foreground leading-relaxed space-y-4 pt-2">
+                    <AccordionContent className="text-foreground/90 leading-relaxed space-y-4 pt-2">
                       <div>
                         <h4 className="font-semibold text-foreground mb-1">Por que recebeu essa nota:</h4>
                         <p>{c.porque}</p>
@@ -144,7 +144,7 @@ export default function EssayCorrectionForm() {
               <div className="space-y-4">
                 {state.result.errosRecorrentes.map((erro, index) => (
                   <div key={index} className="p-4 border rounded-lg bg-secondary/30">
-                    <p className="text-sm text-muted-foreground line-through">"{erro.trechoProblematico}"</p>
+                    <p className="text-sm text-foreground/70 line-through">"{erro.trechoProblematico}"</p>
                     <p className="mt-2 text-primary-foreground bg-primary/90 p-2 rounded-md">
                       <span className="font-bold">Sugestão:</span> "{erro.sugestaoReescrita}"
                     </p>
@@ -161,7 +161,7 @@ export default function EssayCorrectionForm() {
                 {state.result.planoDeTreino7Dias.map((task, index) => (
                   <li key={index} className="flex items-start gap-3">
                     <Target className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
-                    <span className="text-muted-foreground"><span className="font-bold text-foreground">Dia {index + 1}:</span> {task}</span>
+                    <span className="text-foreground/90"><span className="font-bold text-foreground">Dia {index + 1}:</span> {task}</span>
                   </li>
                 ))}
               </ul>

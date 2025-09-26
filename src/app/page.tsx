@@ -5,7 +5,7 @@ export default function Home() {
     <div className="w-full max-w-4xl mx-auto">
       <section className="text-center mb-12">
         <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight font-headline mb-4 text-primary">Potencialize sua Nota no ENEM</h1>
-        <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
+        <p className="text-lg md:text-xl text-foreground/90 max-w-3xl mx-auto">
           Envie sua redação e receba uma correção detalhada, com nota e feedbacks baseados nos critérios do ENEM, tudo feito por nossa Inteligência Artificial.
         </p>
       </section>
