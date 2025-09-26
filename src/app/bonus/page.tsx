@@ -349,7 +349,7 @@ export default function BonusPage() {
                                 <div className="mb-4">
                                     <Lock className="h-10 w-10 text-primary/50" />
                                 </div>
-                                <CardTitle className="font-headline text-xl tracking-tight text-foreground/70">Bônus 5: 9 Bônus extras que serão liberados em 7 dias!!!</CardTitle>
+                                <CardTitle className="font-headline text-xl tracking-tight text-foreground/70">9 Bônus extras que serão liberados em 7 dias!!!</CardTitle>
                                 <CardDescription className="text-foreground/70">Conteúdo exclusivo chegando em breve para acelerar sua aprovação.</CardDescription>
                             </CardHeader>
                             <CardContent>
