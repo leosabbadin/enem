@@ -3,14 +3,11 @@ import * as admin from 'firebase-admin';
 
 let app: admin.app.App;
 
-function getFirebaseAdminApp() {
-  if (app) {
-    return app;
-  }
-
+function initializeFirebaseAdmin() {
   const serviceAccountString = process.env.FIREBASE_SERVICE_ACCOUNT_KEY;
   if (!serviceAccountString) {
-    throw new Error('A variável de ambiente FIREBASE_SERVICE_ACCOUNT_KEY não está definida.');
+    console.error('A variável de ambiente FIREBASE_SERVICE_ACCOUNT_KEY não está definida.');
+    return null;
   }
 
   try {
@@ -27,17 +24,15 @@ function getFirebaseAdminApp() {
     return app;
   } catch (error) {
     console.error('Erro ao inicializar o Firebase Admin SDK:', error);
-    throw new Error('Falha ao parsear as credenciais do Firebase. Verifique a FIREBASE_SERVICE_ACCOUNT_KEY.');
+    return null;
   }
 }
 
 function getAdminAuth() {
-  try {
-    return getFirebaseAdminApp().auth();
-  } catch (error) {
-    console.error("Falha ao obter adminAuth:", error);
-    return null; // Retorna null se a inicialização falhar
+  if (!app) {
+    initializeFirebaseAdmin();
   }
+  return app ? app.auth() : null;
 }
 
 export const adminAuth = getAdminAuth();
