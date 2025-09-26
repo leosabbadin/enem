@@ -1,11 +1,10 @@
 
 import * as admin from 'firebase-admin';
 
-// Function to safely initialize Firebase Admin SDK and get the Auth instance.
-// This prevents re-initialization errors in serverless environments.
-function getAdminAuth(): admin.auth.Auth {
+// This function ensures that the Firebase Admin SDK is initialized only once.
+function initializeAdmin() {
   if (admin.apps.length > 0) {
-    return admin.auth();
+    return admin.app();
   }
 
   const serviceAccountString = process.env.FIREBASE_SERVICE_ACCOUNT_KEY;
@@ -15,17 +14,14 @@ function getAdminAuth(): admin.auth.Auth {
 
   try {
     const serviceAccount = JSON.parse(serviceAccountString);
-    admin.initializeApp({
+    return admin.initializeApp({
       credential: admin.credential.cert(serviceAccount),
-      databaseURL: `https://` + process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID + `.firebaseio.com`,
     });
-    console.log("Firebase Admin SDK initialized successfully.");
-    return admin.auth();
-  } catch (error) {
+  } catch (error: any) {
     console.error('Error initializing Firebase Admin SDK:', error);
-    // Re-throw the error to be caught by the API route
-    throw new Error('Could not initialize Firebase Admin SDK.');
+    throw new Error('Could not initialize Firebase Admin SDK: ' + error.message);
   }
 }
 
-export const adminAuth = getAdminAuth;
+export const adminApp = initializeAdmin();
+export const adminAuth = admin.auth(adminApp);

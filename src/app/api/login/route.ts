@@ -2,27 +2,20 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { adminAuth } from '@/lib/firebase-admin';
 import { cookies } from 'next/headers';
-import { getDatabase } from 'firebase-admin/database';
 
 export async function POST(req: NextRequest) {
   try {
-    const auth = adminAuth();
     const { idToken } = await req.json();
 
     if (!idToken) {
       return NextResponse.json({ error: 'ID token is required' }, { status: 400 });
     }
 
-    const decodedToken = await auth.verifyIdToken(idToken);
-    const uid = decodedToken.uid;
-
-    const expiresIn = 60 * 60 * 24 * 5 * 1000; // 5 days
-    const sessionCookie = await auth.createSessionCookie(idToken, { expiresIn });
+    // Set session expiration to 5 days.
+    const expiresIn = 60 * 60 * 24 * 5 * 1000;
     
-    // Generate a unique session ID and store it in the Realtime Database
-    const sessionId = Date.now().toString();
-    const db = getDatabase();
-    await db.ref(`sessions/${uid}`).set({ sessionId });
+    // Create the session cookie. This will also verify the ID token.
+    const sessionCookie = await adminAuth.createSessionCookie(idToken, { expiresIn });
 
     const options = {
       name: 'session',
@@ -33,16 +26,8 @@ export async function POST(req: NextRequest) {
       path: '/',
     };
 
+    // Set the cookie in the response.
     cookies().set(options);
-    
-    // Also set the client-side session ID
-    cookies().set('clientSessionId', sessionId, {
-        maxAge: expiresIn,
-        httpOnly: false, // Make it accessible to client-side script in AuthProvider
-        secure: process.env.NODE_ENV === 'production',
-        path: '/',
-    });
-
 
     return NextResponse.json({ status: 'success' });
   } catch (error) {
