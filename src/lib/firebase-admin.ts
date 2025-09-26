@@ -1,7 +1,6 @@
 
 import * as admin from 'firebase-admin';
 
-// This function ensures that the Firebase Admin SDK is initialized only once.
 function initializeAdmin() {
   if (admin.apps.length > 0) {
     return admin.app();
@@ -11,15 +10,16 @@ function initializeAdmin() {
   if (!serviceAccountString) {
     throw new Error('The FIREBASE_SERVICE_ACCOUNT_KEY environment variable is not set.');
   }
-
+  
   try {
-    const serviceAccount = JSON.parse(serviceAccountString);
+    const serviceAccount = JSON.parse(Buffer.from(serviceAccountString, 'base64').toString('utf-8'));
+
     return admin.initializeApp({
       credential: admin.credential.cert(serviceAccount),
     });
   } catch (error: any) {
-    console.error('Error initializing Firebase Admin SDK:', error);
-    throw new Error('Could not initialize Firebase Admin SDK: ' + error.message);
+    console.error('Error initializing Firebase Admin SDK. Make sure the FIREBASE_SERVICE_ACCOUNT_KEY is a valid base64 encoded JSON.', error);
+    throw new Error('Could not initialize Firebase Admin SDK. Please check server logs.');
   }
 }
 
