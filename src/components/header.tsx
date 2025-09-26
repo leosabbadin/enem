@@ -97,31 +97,25 @@ export default function Header() {
                 <SheetContent side="right" className="w-[250px] sm:w-[300px]">
                   <div className="flex flex-col space-y-4 pt-8">
                     <SheetClose asChild>
-                      <Button variant="ghost" asChild className="justify-start text-lg">
-                        <Link href="/estudo">
-                          <BookOpen className="mr-3 h-5 w-5" />
-                          Estudo
-                        </Link>
-                      </Button>
+                      <Link href="/estudo" className="flex items-center p-2 rounded-md text-lg hover:bg-accent">
+                        <BookOpen className="mr-3 h-5 w-5" />
+                        Estudo
+                      </Link>
                     </SheetClose>
                     <SheetClose asChild>
-                      <Button variant="ghost" asChild className="justify-start text-lg">
-                        <Link href="/bonus">
-                          <Sparkles className="mr-3 h-5 w-5" />
-                          Bônus
-                        </Link>
-                      </Button>
+                      <Link href="/bonus" className="flex items-center p-2 rounded-md text-lg hover:bg-accent">
+                        <Sparkles className="mr-3 h-5 w-5" />
+                        Bônus
+                      </Link>
                     </SheetClose>
                     <SheetClose asChild>
-                      <Button asChild className="text-lg justify-start px-0">
-                        <Link href="/" className='px-4'>
-                          <BotMessageSquare className="mr-3 h-5 w-5" />
-                          Corrigir Redação
-                        </Link>
-                      </Button>
+                      <Link href="/" className="flex items-center p-2 rounded-md text-lg bg-primary text-primary-foreground font-semibold">
+                        <BotMessageSquare className="mr-3 h-5 w-5" />
+                        Corrigir Redação
+                      </Link>
                     </SheetClose>
                      <SheetClose asChild>
-                        <Button variant="ghost" onClick={handleLogout} className="justify-start text-lg">
+                        <Button variant="ghost" onClick={handleLogout} className="justify-start text-lg h-auto p-2">
                           <LogOut className="mr-3 h-5 w-5" />
                           Sair
                         </Button>
