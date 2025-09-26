@@ -6,7 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { CheckCircle2, BookCopy, ChevronRight, GraduationCap, History, Target, PenTool, Swords, Crown, BrainCircuit, Blocks, TrendingUp, Users, ClipboardCheck, ThumbsDown, Timer } from 'lucide-react';
+import { CheckCircle2, BookCopy, ChevronRight, GraduationCap, History, Target, PenTool, Swords, Crown, BrainCircuit, Blocks, TrendingUp, Users, ClipboardCheck, ThumbsDown, Timer, Languages } from 'lucide-react';
 
 const studyContent = {
   mainTitle: "Capítulos de Estudo",
@@ -753,6 +753,83 @@ const studyContent = {
           'Erros bobos custam 200 pontos → revisão é obrigação.'
         ],
         catchphrase: '“Quem domina o tempo, domina a caneta.”'
+      }
+    },
+    {
+      id: 'chapter-9',
+      title: "Capítulo 9 – Banco Aristocrata de Conectores",
+      description: "Domine a arte da coesão com um arsenal de conectores e variações linguísticas para enriquecer seu texto.",
+      icon: <Languages className="h-10 w-10 text-primary" />,
+      subchapters: [
+        {
+          title: "Conectores para introduzir ideias",
+          icon: <PenTool className="h-6 w-6 text-primary" />,
+          content: [
+            { type: 'list', title: '', items: ['Em primeiro lugar', 'Primeiramente', 'Antes de tudo', 'De início', 'Convém destacar que', 'Importa ressaltar que'] },
+            { type: 'examples', title: '✅ Exemplo aplicado:', items: [{ label: '', text: 'Primeiramente, a falta de infraestrutura tecnológica compromete a inclusão digital no Brasil.' }] },
+          ]
+        },
+        {
+          title: "Conectores para adicionar argumentos",
+          icon: <PenTool className="h-6 w-6 text-primary" />,
+          content: [
+            { type: 'list', title: '', items: ['Além disso', 'Ademais', 'Outrossim', 'Ainda mais', 'De igual modo', 'Paralelamente'] },
+            { type: 'examples', title: '✅ Exemplo aplicado:', items: [{ label: '', text: 'Ademais, a ausência de letramento digital impede o uso crítico da tecnologia.' }] },
+          ]
+        },
+        {
+          title: "Conectores para contrastar / opor ideias",
+          icon: <PenTool className="h-6 w-6 text-primary" />,
+          content: [
+            { type: 'list', title: '', items: ['Contudo', 'Entretanto', 'Todavia', 'No entanto', 'Apesar disso', 'Em contrapartida'] },
+            { type: 'examples', title: '✅ Exemplo aplicado:', items: [{ label: '', text: 'Entretanto, mesmo com avanços tecnológicos, milhões ainda estão excluídos digitalmente.' }] },
+          ]
+        },
+        {
+          title: "Conectores para exemplificar",
+          icon: <PenTool className="h-6 w-6 text-primary" />,
+          content: [
+            { type: 'list', title: '', items: ['Por exemplo', 'Como ilustração', 'A título de exemplo', 'Tal situação pode ser observada em', 'Isso se evidencia em'] },
+            { type: 'examples', title: '✅ Exemplo aplicado:', items: [{ label: '', text: 'Isso se evidencia em dados da ONU que mostram que 46 milhões de brasileiros ainda não têm acesso à internet.' }] },
+          ]
+        },
+        {
+          title: "Conectores para concluir",
+          icon: <PenTool className="h-6 w-6 text-primary" />,
+          content: [
+            { type: 'list', title: '', items: ['Portanto', 'Logo', 'Assim', 'Dessa forma', 'Desse modo', 'Em vista disso', 'Em síntese'] },
+            { type: 'examples', title: '✅ Exemplo aplicado:', items: [{ label: '', text: 'Portanto, é essencial que o governo invista em políticas públicas de inclusão digital.' }] },
+          ]
+        },
+        {
+          title: "Variações linguísticas para enriquecer o texto",
+          icon: <Languages className="h-6 w-6 text-primary" />,
+          content: [
+            { type: 'list', title: '👉 Em vez de repetir sempre “problema”, use:', items: ['desafio, impasse, questão, obstáculo, dilema.'] },
+            { type: 'list', title: '👉 Em vez de repetir sempre “importante”, use:', items: ['relevante, fundamental, indispensável, imprescindível.'] },
+            { type: 'list', title: '👉 Em vez de repetir sempre “ajudar”, use:', items: ['colaborar, contribuir, auxiliar, promover, fomentar.'] },
+            { type: 'examples', title: '✅ Exemplo aplicado:', items: [{ label: '', text: 'Esse desafio é relevante, pois colaborar na inclusão digital é indispensável para a cidadania.' }] },
+          ]
+        },
+        {
+          title: "Exercícios práticos",
+          icon: <Target className="h-6 w-6 text-primary" />,
+          content: [
+            { type: 'exercise', title: '', text: 'Reescreva a introdução do tema “saúde mental”, trocando todos os conectores por versões mais sofisticadas.' },
+            { type: 'exercise', title: '', text: 'Transforme essa frase plebeia em versão aristocrata:\n\n“Além disso, o governo deve ajudar na educação.”' },
+            { type: 'exercise', title: '', text: 'Escreva uma conclusão usando apenas conectores de síntese.' },
+          ]
+        }
+      ],
+      summary: {
+        title: 'Resumo Aristocrata',
+        icon: <Crown className="h-6 w-6 text-primary" />,
+        points: [
+          'Coesão é detalhe que a banca valoriza muito.',
+          'Um texto com conectores variados soa maduro e sobe fácil 80 pontos.',
+          'Plebeu repete “além disso”; Aristocrata usa “outrossim”.',
+        ],
+        catchphrase: '“Conector é ponte: quem sabe construir, leva a banca onde quer.”'
       }
     }
   ]
