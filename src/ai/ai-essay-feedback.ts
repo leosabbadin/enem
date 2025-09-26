@@ -25,6 +25,7 @@ const CompetenciaSchema = z.object({
 const AnalyzeEssayOutputSchema = z.object({
   notaFinal: z.number().describe('A nota final da redação, de 0 a 1000, que é a soma das notas das competências.'),
   feedbackGeral: z.string().describe('Um feedback geral e conciso sobre a redação.'),
+  oQueMelhorar: z.string().describe('Um parágrafo com os principais pontos que o aluno deve focar para melhorar nas próximas redações.'),
   competencias: z.array(CompetenciaSchema).length(5).describe('Uma lista com a análise detalhada de cada uma das 5 competências do ENEM.'),
 });
 
@@ -50,7 +51,8 @@ Para cada uma das 5 competências, forneça uma nota de 0 a 200 e um feedback co
 - Competência 4: Demonstrar conhecimento dos mecanismos linguísticos necessários para a construção da argumentação.
 - Competência 5: Elaborar proposta de intervenção para o problema abordado, respeitando os direitos humanos.
 
-A nota final deve ser a soma das notas das 5 competências. O feedback geral deve ser um resumo dos pontos fortes e fracos da redação.`,
+A nota final deve ser a soma das notas das 5 competências. O feedback geral deve ser um resumo dos pontos fortes e fracos da redação.
+Além disso, forneça um parágrafo em "oQueMelhorar" com os principais pontos que o aluno deve focar para melhorar nas próximas redações.`,
 });
 
 const analyzeEssayFlow = ai.defineFlow(

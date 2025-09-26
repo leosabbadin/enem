@@ -6,11 +6,12 @@ import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { Loader2 } from 'lucide-react';
+import { Lightbulb, Loader2 } from 'lucide-react';
 
 interface CorrectionResult {
   notaFinal: number;
   feedbackGeral: string;
+  oQueMelhorar: string;
   competencias: {
     nome: string;
     nota: number;
@@ -86,6 +87,15 @@ export default function EssayCorrectionForm() {
             <div>
               <h3 className="text-2xl font-bold mb-2 font-headline">Feedback Geral</h3>
               <p className="text-muted-foreground leading-relaxed">{state.result.feedbackGeral}</p>
+            </div>
+             <div className="bg-accent/20 border-l-4 border-accent p-4 rounded-r-lg">
+              <div className="flex items-start gap-3">
+                <Lightbulb className="h-6 w-6 text-accent flex-shrink-0 mt-1" />
+                <div>
+                  <h3 className="text-xl font-bold mb-2 font-headline text-accent-foreground">O que Melhorar?</h3>
+                  <p className="text-muted-foreground leading-relaxed">{state.result.oQueMelhorar}</p>
+                </div>
+              </div>
             </div>
             <div>
               <h3 className="text-2xl font-bold mb-4 font-headline">Análise por Competência</h3>
