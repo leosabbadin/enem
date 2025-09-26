@@ -6,8 +6,8 @@ import Footer from '@/components/footer';
 import { Sora } from 'next/font/google';
 
 export const metadata: Metadata = {
-  title: 'Redação AI Pro',
-  description: 'Estude e corrija suas redações do ENEM com inteligência artificial.',
+  title: 'Hackeando a Redação do Enem',
+  description: 'Sua plataforma para hackear a redação do ENEM com inteligência artificial.',
 };
 
 const sora = Sora({

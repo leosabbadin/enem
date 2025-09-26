@@ -10,7 +10,7 @@ export default function Header() {
           <div className="flex items-center">
             <Link href="/" className="flex items-center gap-2 text-2xl font-headline font-bold text-primary">
               <PenSquare className="h-8 w-8" />
-              <span>Redação AI Pro</span>
+              <span>Hackeando a Redação</span>
             </Link>
           </div>
           <div className="hidden md:flex items-center space-x-1">
