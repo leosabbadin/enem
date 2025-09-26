@@ -6,7 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { CheckCircle2, BookCopy, ChevronRight, GraduationCap, History, Target, PenTool, Swords, Crown, BrainCircuit, Blocks, TrendingUp, Users, ClipboardCheck, ThumbsDown } from 'lucide-react';
+import { CheckCircle2, BookCopy, ChevronRight, GraduationCap, History, Target, PenTool, Swords, Crown, BrainCircuit, Blocks, TrendingUp, Users, ClipboardCheck, ThumbsDown, Timer } from 'lucide-react';
 
 const studyContent = {
   mainTitle: "Capítulos de Estudo",
@@ -671,6 +671,88 @@ const studyContent = {
           'Acertos que valem ouro: repertório conectado, proposta detalhada, coesão.'
         ],
         catchphrase: '“Aprender com os erros dos outros é chegar ao topo sem tropeçar.”'
+      }
+    },
+    {
+      id: 'chapter-8',
+      title: "Capítulo 8 – Estratégias de Tempo e Revisão",
+      description: "Aprenda a gerenciar seu tempo de prova e a fazer uma revisão final que garante pontos preciosos.",
+      icon: <Timer className="h-10 w-10 text-primary" />,
+      subchapters: [
+        {
+          title: "Gestão do tempo de prova",
+          icon: <Timer className="h-6 w-6 text-primary" />,
+          content: [
+            { type: 'paragraph', text: 'O ENEM não é só conhecimento, é resistência.' },
+            { type: 'list', title: 'Distribuição sugerida:', items: [
+              '1ª hora (Leitura geral da prova + Textos motivadores da redação)',
+              '2h seguintes (Ciências Humanas + Linguagens)',
+              '1h para Matemática e Ciências da Natureza',
+              '1h para a redação (rascunho + versão final)',
+              '30 min finais para revisão geral'
+            ]},
+            { type: 'paragraph', text: '👉 Estratégia Aristocrata: começar a redação após fazer metade da prova, porque a mente já está aquecida, mas ainda lúcida.' }
+          ]
+        },
+        {
+          title: "Etapas para escrever a redação (em 1h)",
+          icon: <PenTool className="h-6 w-6 text-primary" />,
+          content: [
+            { type: 'list', title: '', items: [
+              '5 min – Leitura dos textos motivadores + brainstorming de ideias.',
+              '10 min – Escreva o rascunho da introdução (tese clara).',
+              '30 min – Desenvolva os 2 parágrafos (argumentos + repertório).',
+              '10 min – Conclusão detalhada (quem, como, para quê).',
+              '5 min – Revisão rápida do rascunho.'
+            ]},
+            { type: 'paragraph', text: '👉 Sempre deixe 10 min finais para passar a limpo com calma.' }
+          ]
+        },
+        {
+          title: "Checklist da revisão rápida",
+          icon: <ClipboardCheck className="h-6 w-6 text-primary" />,
+          content: [
+            { type: 'paragraph', title: 'Antes de entregar, pergunte-se:', text: '' },
+            { type: 'list', title: '', items: [
+              'Tema: estou dentro do tema?',
+              'Tese: minha opinião está clara na introdução?',
+              'Argumentos: cada parágrafo tem 1 ideia central + repertório?',
+              'Coesão: usei conectores variados (portanto, contudo, ademais)?',
+              'Conclusão: quem + o quê + como + para quê?',
+              'Língua: erros de ortografia, concordância ou informalidade?',
+              'Linhas: mínimo de 7, máximo de 30.'
+            ]}
+          ]
+        },
+        {
+          title: "Dicas de ouro para evitar perda de tempo",
+          icon: <Crown className="h-6 w-6 text-primary" />,
+          content: [
+            { type: 'list', title: '', items: [
+              'Não leia a prova inteira antes de começar: ataque blocos.',
+              'Se travar numa questão, pule. O tempo da redação vale mais.',
+              'Use rascunho estratégico: não escreva frases gigantes, apenas blocos de ideias → depois transforma em texto.',
+              'Controle ansiedade: use o relógio da prova a cada 30 min como checkpoint.'
+            ]}
+          ]
+        },
+        {
+          title: "Treino de resistência (simulação em casa)",
+          icon: <Target className="h-6 w-6 text-primary" />,
+          content: [
+            { type: 'exercise', title: 'Exercício para o aluno:', text: 'Pegue 1 tema simulado (do Cap. 6).\nColoque um cronômetro de 1h.\nEscreva a redação completa no tempo limite.\nCompare com checklist do Cap. 8.\nFaça esse treino 1 vez por semana até a prova.' }
+          ]
+        }
+      ],
+      summary: {
+        title: 'Resumo Aristocrata',
+        icon: <Crown className="h-6 w-6 text-primary" />,
+        points: [
+          'O ENEM é uma maratona: quem controla o relógio controla a nota.',
+          'Redação = 1h bem usada + revisão final.',
+          'Erros bobos custam 200 pontos → revisão é obrigação.'
+        ],
+        catchphrase: '“Quem domina o tempo, domina a caneta.”'
       }
     }
   ]
