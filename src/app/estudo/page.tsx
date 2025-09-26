@@ -510,6 +510,84 @@ const studyContent = {
         ],
         catchphrase: '“Quem fecha com força, abre o caminho para o mil.”'
       }
+    },
+    {
+      id: 'chapter-6',
+      title: "Capítulo 6 – Treino Intensivo com Temas Simulados",
+      description: "Teste suas habilidades com temas simulados no estilo do ENEM e prepare-se para o dia da prova.",
+      icon: <Swords className="h-10 w-10 text-primary" />,
+      subchapters: [
+        {
+          title: "Tema Simulado 1 – O impacto da inteligência artificial no mercado de trabalho brasileiro",
+          icon: <Target className="h-6 w-6 text-primary" />,
+          content: [
+            { type: 'quote', title: 'Texto motivador A', text: 'De acordo com relatório do Fórum Econômico Mundial (2023), estima-se que a automação e a inteligência artificial substituirão cerca de 85 milhões de empregos até 2025, ao mesmo tempo em que criarão 97 milhões de novas funções.' },
+            { type: 'quote', title: 'Texto motivador B', text: '“A tecnologia não é boa nem má; tudo depende de como a usamos.” (Hannah Arendt).' },
+            { type: 'paragraph', title: 'Enunciado', text: 'Com base nos textos motivadores e nos conhecimentos construídos ao longo de sua formação, redija um texto dissertativo-argumentativo sobre o impacto da inteligência artificial no mercado de trabalho brasileiro, propondo uma intervenção que respeite os direitos humanos.' },
+          ]
+        },
+        {
+          title: "Tema Simulado 2 – Os desafios da saúde mental entre jovens no Brasil",
+          icon: <Target className="h-6 w-6 text-primary" />,
+          content: [
+            { type: 'quote', title: 'Texto motivador A', text: 'Segundo a Organização Mundial da Saúde (OMS), o Brasil é o país com maior número de pessoas ansiosas no mundo. Entre adolescentes, 1 em cada 5 apresenta sintomas de ansiedade ou depressão.' },
+            { type: 'quote', title: 'Texto motivador B', text: '“O sofrimento psíquico na juventude reflete também o peso das pressões sociais.” (Sigmund Freud).' },
+            { type: 'paragraph', title: 'Enunciado', text: 'Com base nos textos motivadores e nos conhecimentos construídos ao longo de sua formação, redija um texto dissertativo-argumentativo sobre os desafios da saúde mental entre jovens no Brasil, propondo uma intervenção que respeite os direitos humanos.' },
+          ]
+        },
+        {
+          title: "Tema Simulado 3 – Os efeitos da desinformação na sociedade brasileira",
+          icon: <Target className="h-6 w-6 text-primary" />,
+          content: [
+            { type: 'quote', title: 'Texto motivador A', text: 'De acordo com pesquisa da Reuters Institute (2024), 35% dos brasileiros afirmam já ter acreditado em uma notícia falsa compartilhada em redes sociais.' },
+            { type: 'quote', title: 'Texto motivador B', text: '“A mentira organizada pode destruir a realidade.” (Hannah Arendt).' },
+            { type: 'paragraph', title: 'Enunciado', text: 'Com base nos textos motivadores e nos conhecimentos construídos ao longo de sua formação, redija um texto dissertativo-argumentativo sobre os efeitos da desinformação na sociedade brasileira, propondo uma intervenção que respeite os direitos humanos.' },
+          ]
+        },
+        {
+          title: "Tema Simulado 4 – Mudanças climáticas e desafios urbanos no Brasil",
+          icon: <Target className="h-6 w-6 text-primary" />,
+          content: [
+            { type: 'quote', title: 'Texto motivador A', text: 'Relatório da ONU (2024) aponta que o Brasil está entre os 10 países mais afetados por eventos climáticos extremos, como enchentes e secas.' },
+            { type: 'quote', title: 'Texto motivador B', text: '“O ser humano não herdou a Terra de seus pais, mas a tomou emprestada de seus filhos.” (Provérbio indígena).' },
+            { type: 'paragraph', title: 'Enunciado', text: 'Com base nos textos motivadores e nos conhecimentos construídos ao longo de sua formação, redija um texto dissertativo-argumentativo sobre mudanças climáticas e desafios urbanos no Brasil, propondo uma intervenção que respeite os direitos humanos.' },
+          ]
+        },
+        {
+          title: "Tema Simulado 5 – O direito à moradia digna no Brasil",
+          icon: <Target className="h-6 w-6 text-primary" />,
+          content: [
+            { type: 'quote', title: 'Texto motivador A', text: 'A Constituição Federal de 1988, em seu artigo 6º, reconhece a moradia como um direito social. Apesar disso, milhões de brasileiros ainda vivem em condições precárias.' },
+            { type: 'quote', title: 'Texto motivador B', text: '“Onde não há casa digna, não há cidadania plena.” (ONU-Habitat).' },
+            { type: 'paragraph', title: 'Enunciado', text: 'Com base nos textos motivadores e nos conhecimentos construídos ao longo de sua formação, redija um texto dissertativo-argumentativo sobre o direito à moradia digna no Brasil, propondo uma intervenção que respeite os direitos humanos.' },
+          ]
+        },
+        {
+          title: "Como usar os simulados",
+          icon: <PenTool className="h-6 w-6 text-primary" />,
+          content: [
+            {
+              type: 'list', title: '', items: [
+                'Ler atentamente os textos motivadores.',
+                'Definir a tese em 1 frase (problema + impacto).',
+                'Criar 2 parágrafos de desenvolvimento (usando arsenal de filosofia e história do Cap. 2).',
+                'Fechar com conclusão detalhada (modelo do Cap. 5).',
+                'Revisar coesão, ortografia e tamanho (mín. 7, máx. 30 linhas).',
+              ]
+            }
+          ]
+        }
+      ],
+      summary: {
+        title: 'Resumo Aristocrata',
+        icon: <Crown className="h-6 w-6 text-primary" />,
+        points: [
+          'Treino com simulação é o que separa aluno comum de aluno de elite.',
+          'Esses 5 temas concentram 70% de chance do ENEM 2025 girar em torno deles.',
+          'Quem treina aqui, entra na prova já em guerra vencida.',
+        ],
+        catchphrase: '“Quem sua no treino, sangra menos na guerra.”'
+      }
     }
   ]
 };
@@ -655,5 +733,3 @@ export default function EstudoPage() {
     </div>
   );
 }
-
-    
