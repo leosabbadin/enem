@@ -7,7 +7,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { CheckCircle, Lightbulb, ListChecks, Loader2, Target, Edit } from 'lucide-react';
+import { Lightbulb, ListChecks, Loader2, Target, Edit } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
 
 interface CorrectionResult {
@@ -23,7 +23,6 @@ interface CorrectionResult {
     trechoProblematico: string;
     sugestaoReescrita: string;
   }[];
-  propostaIntervencaoRevisada: string;
   planoDeTreino7Dias: string[];
   oQueMelhorar: string;
 }
@@ -155,14 +154,7 @@ export default function EssayCorrectionForm() {
             </div>
 
             <Separator />
-
-            <div>
-              <h3 className="text-2xl font-bold mb-2 font-headline flex items-center gap-2"><CheckCircle className="h-6 w-6" /> Proposta de Intervenção Revisada</h3>
-              <p className="text-muted-foreground leading-relaxed">{state.result.propostaIntervencaoRevisada}</p>
-            </div>
-
-             <Separator />
-
+            
             <div>
               <h3 className="text-2xl font-bold mb-4 font-headline flex items-center gap-2"><ListChecks className="h-6 w-6" /> Plano de Treino para 7 Dias</h3>
               <ul className="space-y-2">

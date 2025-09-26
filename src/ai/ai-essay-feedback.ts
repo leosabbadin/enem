@@ -33,7 +33,6 @@ const AnalyzeEssayOutputSchema = z.object({
   notaFinal: z.number().describe('A nota final da redação, de 0 a 1000, que é a soma das notas das competências.'),
   competencias: z.array(CompetenciaSchema).length(5).describe('Uma lista com a análise detalhada de cada uma das 5 competências do ENEM.'),
   errosRecorrentes: z.array(ErroRecorrenteSchema).describe('Lista de trechos problemáticos com sugestões de reescrita.'),
-  propostaIntervencaoRevisada: z.string().describe('Análise da proposta de intervenção, completando os elementos faltantes se necessário (agente, ação, meio/modo, finalidade, detalhamento).'),
   planoDeTreino7Dias: z.array(z.string()).length(7).describe('Um array com 7 microtarefas diárias, uma para cada dia, para melhorar nas falhas encontradas.'),
   oQueMelhorar: z.string().describe('Um parágrafo com os principais pontos que o aluno deve focar para melhorar nas próximas redações.'),
 });
@@ -70,9 +69,8 @@ Estrutura de resposta obrigatória:
     -   **porque**: Explique por que o aluno recebeu essa nota (2–4 pontos).
     -   **comoMelhorar**: Dê 2 a 4 dicas com exemplos curtos de como melhorar.
 4.  **Erros recorrentes e reescritas pontuais**: Liste 2 a 4 trechos problemáticos e sugira a reescrita.
-5.  **Proposta de intervenção revisada**: Analise a proposta. Se faltarem elementos, complete-os de forma exequível e respeitando os direitos humanos.
-6.  **Plano de treino para 7 dias**: Crie 7 microtarefas diárias, uma para cada dia, focadas nas falhas encontradas.
-7.  **O que Melhorar**: Forneça um parágrafo consolidado com os principais pontos que o aluno deve focar para melhorar.
+5.  **Plano de treino para 7 dias**: Crie 7 microtarefas diárias, uma para cada dia, focadas nas falhas encontradas.
+6.  **O que Melhorar**: Forneça um parágrafo consolidado com os principais pontos que o aluno deve focar para melhorar.
 
 ⚠️ Zere a redação (notaFinal = 0 e preencha o resumoGeral com a justificativa) se: fuga total ao tema; não for dissertativo-argumentativo; tiver até 7 linhas; conter desrespeito aos direitos humanos; cópia integral de textos motivadores; ou linguagem ofensiva.`,
 });
