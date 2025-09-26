@@ -187,7 +187,7 @@ const renderContent = (contentItem: any, index: number) => {
       return (
         <div key={index}>
           {contentItem.title && <h4 className="font-bold text-foreground mt-4 mb-2">{contentItem.title}</h4>}
-          <p className="text-muted-foreground whitespace-pre-line">{contentItem.text}</p>
+          <p className="text-foreground/90 whitespace-pre-line">{contentItem.text}</p>
         </div>
       );
     case 'list':
@@ -198,7 +198,7 @@ const renderContent = (contentItem: any, index: number) => {
             {contentItem.items.map((item: string, i: number) => (
               <li key={i} className="flex items-start gap-2">
                 <ChevronRight className="h-4 w-4 text-primary mt-1 flex-shrink-0" />
-                <span className="text-muted-foreground">{item}</span>
+                <span className="text-foreground/90">{item}</span>
               </li>
             ))}
           </ul>
@@ -212,7 +212,7 @@ const renderContent = (contentItem: any, index: number) => {
                 {contentItem.items.map((item: {label: string, text: string}, i: number) => (
                     <div key={i} className="p-3 bg-card/50 rounded-md border">
                         <p className="font-semibold text-foreground/80 text-sm">{item.label}</p>
-                        <p className="text-muted-foreground whitespace-pre-line">{item.text}</p>
+                        <p className="text-foreground/90 whitespace-pre-line">{item.text}</p>
                     </div>
                 ))}
             </div>
@@ -246,7 +246,7 @@ const ChapterModal = ({ chapter }: { chapter: typeof studyContent.chapters[0] })
             <ScrollArea className="flex-grow pr-6">
                 <div className="space-y-8">
                     {chapter.subchapters.map((sub, index) => (
-                        <section key={index} className="space-y-4 border-b pb-6 last:border-b-0 last:pb-0">
+                        <section key={index} className="space-y-4 border-b border-border/50 pb-6 last:border-b-0 last:pb-0">
                             <h3 className="text-2xl font-bold font-headline flex items-center gap-3">{sub.icon} {sub.title}</h3>
                             <div className="pl-9 space-y-4">
                                 {sub.content.map(renderContent)}
@@ -264,7 +264,7 @@ const ChapterModal = ({ chapter }: { chapter: typeof studyContent.chapters[0] })
                                     {chapter.summary.points.map((point, i) => (
                                         <li key={i} className="flex items-start gap-3">
                                             <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                                            <span className="text-muted-foreground">{point}</span>
+                                            <span className="text-foreground/90">{point}</span>
                                         </li>
                                     ))}
                                 </ul>
@@ -322,3 +322,5 @@ export default function EstudoPage() {
     </div>
   );
 }
+
+    
