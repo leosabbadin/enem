@@ -78,7 +78,7 @@ const bonusItems = [
     {
         id: 'bonus-3',
         icon: <ClipboardCheck className="h-10 w-10 text-primary" />,
-        title: "Bônus 3 – Guia de Propostas de Intervenção",
+        title: "Bônus 3 – Guia de Propostas de Intervenção (Melhor visualização no PC)",
         description: "Aprenda a fórmula para criar propostas de intervenção perfeitas e garanta a nota máxima na Competência 5.",
         type: 'proposals',
         content: {
@@ -277,5 +277,3 @@ export default function BonusPage() {
         </div>
     );
 }
-
-    
