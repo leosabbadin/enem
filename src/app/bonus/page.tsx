@@ -52,3 +52,5 @@ export default function BonusPage() {
     </div>
   );
 }
+
+    

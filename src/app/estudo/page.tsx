@@ -6,7 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { CheckCircle2, BookCopy, ChevronRight, GraduationCap, History, Target, PenTool, Swords, Crown, BrainCircuit, Blocks, TrendingUp } from 'lucide-react';
+import { CheckCircle2, BookCopy, ChevronRight, GraduationCap, History, Target, PenTool, Swords, Crown, BrainCircuit, Blocks, TrendingUp, Users, ClipboardCheck } from 'lucide-react';
 
 const studyContent = {
   mainTitle: "Capítulos de Estudo",
@@ -439,6 +439,77 @@ const studyContent = {
         ],
         catchphrase: '“Quem prevê, domina. Quem improvisa, arrisca.”'
       }
+    },
+    {
+      id: 'chapter-5',
+      title: "Capítulo 5 – Treino Intensivo de Conclusões",
+      description: "Aprenda a fórmula para criar propostas de intervenção perfeitas e garanta a nota máxima na Competência 5.",
+      icon: <ClipboardCheck className="h-10 w-10 text-primary" />,
+      subchapters: [
+        {
+          title: "Estrutura da conclusão",
+          icon: <BookCopy className="h-6 w-6 text-primary" />,
+          content: [
+            { type: 'quote', title: 'Fórmula padrão:', text: 'Portanto, é essencial que [quem] promova [o quê], por meio de [como], com o objetivo de [para quê]. Assim, será possível [impacto positivo].' }
+          ]
+        },
+        {
+          title: "Exemplos aplicados",
+          icon: <GraduationCap className="h-6 w-6 text-primary" />,
+          content: [
+            { type: 'examples', title: '1. Tema: Inclusão digital no Brasil', items: [{ label: '', text: 'Portanto, é essencial que o Ministério das Comunicações amplie o acesso à internet no país, por meio de investimentos em infraestrutura tecnológica nas áreas rurais e periféricas, com o objetivo de garantir igualdade de oportunidades educacionais e profissionais. Assim, será possível reduzir a exclusão digital e social.'}] },
+            { type: 'examples', title: '2. Tema: Saúde mental dos jovens', items: [{ label: '', text: 'Portanto, é fundamental que o Ministério da Educação, em parceria com o Ministério da Saúde, desenvolva programas de apoio psicológico nas escolas, por meio da contratação de profissionais capacitados e campanhas de conscientização, com o objetivo de promover o bem-estar emocional dos estudantes. Dessa forma, será possível prevenir casos de depressão e ansiedade na juventude.'}] },
+            { type: 'examples', title: '3. Tema: Desinformação e fake news', items: [{ label: '', text: 'Portanto, é necessário que o Congresso Nacional crie legislações mais rígidas contra a propagação de notícias falsas, por meio de regulamentação das plataformas digitais e incentivo à educação midiática nas escolas, com o objetivo de garantir a circulação de informações verdadeiras. Assim, a sociedade poderá se proteger da manipulação e fortalecer a democracia.'}] },
+            { type: 'examples', title: '4. Tema: Mudanças climáticas', items: [{ label: '', text: 'Portanto, é imprescindível que o governo federal, em parceria com empresas privadas e ONGs ambientais, invista em políticas sustentáveis, por meio da ampliação da coleta seletiva, incentivo a energias limpas e transporte público eficiente, com o objetivo de minimizar os impactos ambientais urbanos. Dessa maneira, será possível assegurar qualidade de vida para as próximas gerações.'}] }
+          ]
+        },
+        {
+          title: "Tabelas de atores sociais para usar em qualquer tema",
+          icon: <Users className="h-6 w-6 text-primary" />,
+          content: [
+            { type: 'list', title: '', items: [
+                'Governo federal → criar leis, políticas públicas, programas nacionais.',
+                'Ministério da Educação → melhorar escolas, incluir disciplinas, capacitar professores.',
+                'Ministério da Saúde → campanhas de conscientização, atendimento gratuito.',
+                'ONGs → ações locais, projetos sociais.',
+                'Mídia → campanhas educativas, divulgação.',
+                'Família e escola → formação de valores, apoio psicológico.',
+                'Empresas privadas → financiar projetos, investir em inovação.',
+            ]}
+          ]
+        },
+        {
+          title: "Erros que derrubam nota",
+          icon: <ThumbsDown className="h-6 w-6 text-primary" />,
+          content: [
+            { type: 'list', title: '', items: [
+              '❌ Conclusão vaga: “O governo deve melhorar a educação.”',
+              '❌ Sem detalhar como: “A sociedade precisa mudar.”',
+              '❌ Sem objetivo: “É importante resolver isso.”',
+              '❌ Repetição da introdução sem proposta nova.'
+            ]}
+          ]
+        },
+        {
+          title: "Exercícios práticos",
+          icon: <PenTool className="h-6 w-6 text-primary" />,
+          content: [
+            { type: 'exercise', title: '', text: 'Crie uma proposta de intervenção detalhada para o tema “Violência escolar no Brasil”.' },
+            { type: 'exercise', title: '', text: 'Escreva 2 conclusões diferentes para o tema “Inteligência artificial e mercado de trabalho”, cada uma com atores sociais distintos.' },
+            { type: 'exercise', title: '', text: 'Reescreva esta proposta vaga em formato detalhado:\n\n“O governo deve investir em saúde mental.”' }
+          ]
+        }
+      ],
+      summary: {
+        title: 'Resumo Aristocrata',
+        icon: <Crown className="h-6 w-6 text-primary" />,
+        points: [
+          'A conclusão é a cereja da redação: se faltar, perde ponto alto.',
+          'Fórmula salva do improviso: Quem + O quê + Como + Para quê.',
+          'Ter modelos prontos é como entrar na prova com armas carregadas.'
+        ],
+        catchphrase: '“Quem fecha com força, abre o caminho para o mil.”'
+      }
     }
   ]
 };
@@ -584,3 +655,5 @@ export default function EstudoPage() {
     </div>
   );
 }
+
+    
