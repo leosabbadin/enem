@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState } from 'react';
@@ -5,14 +6,14 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { CheckCircle2, BookCopy, ChevronRight, GraduationCap, History, Target, PenTool, Swords, Crown } from 'lucide-react';
+import { CheckCircle2, BookCopy, ChevronRight, GraduationCap, History, Target, PenTool, Swords, Crown, BrainCircuit } from 'lucide-react';
 
 const studyContent = {
+  mainTitle: "Capítulos de Estudo",
+  mainDescription: "Navegue pelos capítulos para dominar cada aspecto da redação do ENEM, do básico ao avançado.",
   chapters: [
     {
       id: 'chapter-1',
-      mainTitle: "Capítulos de Estudo",
-      mainDescription: "Navegue pelos capítulos para dominar cada aspecto da redação do ENEM, do básico ao avançado.",
       title: "Capítulo 1 – Fundamentos da Redação Nota 1000",
       description: "Domine as bases essenciais para construir uma redação impecável, desde a estrutura até o repertório.",
       icon: <BookCopy className="h-10 w-10 text-primary" />,
@@ -124,6 +125,11 @@ const studyContent = {
           content: [
             {
                 type: 'quote',
+                title: 'Tema: “Os impactos da automação no mercado de trabalho”',
+                text: ''
+            },
+            {
+                type: 'quote',
                 title: 'Redação Nota 600 (ruim):',
                 text: '“O trabalho está acabando porque a tecnologia está tomando os empregos. Isso é ruim para todo mundo. As pessoas vão ficar sem trabalho e isso vai gerar pobreza. O governo precisa ajudar.”'
             },
@@ -158,6 +164,7 @@ const studyContent = {
           content: [
               {
                   type: 'list',
+                  title: '',
                   items: [
                       'Escreva uma introdução para o tema: “Inteligência artificial e desafios éticos no Brasil”.',
                       'Escolha 1 filósofo ou sociólogo e conecte-o ao tema acima.',
@@ -176,6 +183,86 @@ const studyContent = {
           'Quem tem frases prontas e exemplos históricos sempre sai na frente.'
         ],
         catchphrase: '“Redação não é talento, é método. Quem segue a fórmula, chega no topo.”'
+      }
+    },
+    {
+      id: 'chapter-2',
+      title: "Capítulo 2 – Filosofia e História como Arsenal",
+      description: "Aprenda a usar repertório de filosofia e história para dar peso e autoridade aos seus argumentos.",
+      icon: <BrainCircuit className="h-10 w-10 text-primary" />,
+      subchapters: [
+        {
+          title: "O que é repertório válido?",
+          icon: <CheckCircle2 className="h-6 w-6 text-primary" />,
+          content: [
+            { type: 'paragraph', text: 'Repertório sociocultural é toda referência externa que se conecta ao tema da redação.' },
+            { type: 'paragraph', text: 'Pode vir de: Filosofia, Sociologia, História, Literatura, Constituição, ONU, IBGE, filmes, músicas e até séries.' },
+            { type: 'paragraph', text: 'O segredo é: não basta citar, tem que relacionar com o tema.' },
+            { type: 'examples', title: '', items: [
+                { label: 'Exemplo ruim:', text: '“Segundo Platão, a caverna mostra a ignorância humana.”' },
+                { label: 'Exemplo bom:', text: '“A alegoria da caverna, descrita por Platão, revela como a falta de acesso à informação limita a visão crítica do indivíduo — situação semelhante à exclusão digital no Brasil.”' }
+            ]}
+          ]
+        },
+        {
+          title: "Filosofia aplicada na redação",
+          icon: <BrainCircuit className="h-6 w-6 text-primary" />,
+          content: [
+            { type: 'paragraph', text: 'Aqui estão autores-chave, frases prontas e aplicação prática:' },
+            { type: 'list', title: '', items: [
+                'Platão (Alegoria da Caverna): “A falta de acesso à informação mantém indivíduos presos na ignorância, como prisioneiros na caverna de Platão.”',
+                'Aristóteles (Política e ética): “O homem é um ser político, e a exclusão digital compromete sua plena participação na vida social.”',
+                'Kant (Autonomia e razão): “Para Kant, o uso da razão é essencial à liberdade, mas sem acesso à tecnologia esse direito é limitado.”',
+                'Bauman (Modernidade líquida): “Na sociedade líquida descrita por Bauman, a falta de inclusão digital amplia a instabilidade e a exclusão.”',
+                'Foucault (Vigilância e poder): “Segundo Foucault, o poder se exerce pela vigilância. Nas redes sociais, isso se traduz no controle dos dados pessoais.”',
+                'Adorno e Horkheimer (Indústria Cultural): “A indústria cultural, como apontaram Adorno e Horkheimer, transforma informação em produto, o que reforça desigualdades digitais.”'
+            ]}
+          ]
+        },
+        {
+          title: "História aplicada na redação",
+          icon: <History className="h-6 w-6 text-primary" />,
+          content: [
+            { type: 'paragraph', text: 'Eventos e períodos históricos que podem ser usados como espelho do presente:' },
+            { type: 'list', title: '', items: [
+                'Revolução Francesa (1789) – igualdade, liberdade, fraternidade → exclusão digital fere esses princípios.',
+                'Iluminismo (século XVIII) – valorização da razão e do conhecimento → internet como acesso à informação.',
+                'Revolução Industrial (século XIX) – máquinas substituindo trabalhadores → hoje, automação + inteligência artificial.',
+                'Ditadura Militar (1964–1985) – censura e falta de informação → paralelo com fake news e bolhas digitais.',
+                'Constituição de 1988 – garante direitos sociais → inclusão digital como extensão da cidadania.'
+            ]}
+          ]
+        },
+        {
+            title: "Temas prováveis e como usar repertório",
+            icon: <Target className="h-6 w-6 text-primary" />,
+            content: [
+                { type: 'list', title: 'Inteligência artificial e ética', items: ['Kant: razão e moral', 'Revolução Industrial: desemprego estrutural'] },
+                { type: 'list', title: 'Violência escolar no Brasil', items: ['Durkheim: falha da educação na integração social', 'Constituição 1988: direito à segurança'] },
+                { type: 'list', title: 'Desafios da inclusão digital', items: ['Platão: caverna (ignorância)', 'ONU/UNESCO: direito à informação'] },
+                { type: 'list', title: 'Mudanças climáticas e responsabilidade social', items: ['Rousseau: contrato social', 'Revolução Industrial: impacto ambiental histórico'] },
+            ]
+        },
+        {
+          title: "Exercícios práticos",
+          icon: <PenTool className="h-6 w-6 text-primary" />,
+          content: [
+            { type: 'exercise', title: '', text: 'Escreva uma introdução para o tema “Os desafios da inclusão digital no Brasil” citando Platão.' },
+            { type: 'exercise', title: '', text: 'Monte um parágrafo de desenvolvimento para o tema “Inteligência artificial e ética” usando Kant.' },
+            { type: 'exercise', title: '', text: 'Relacione a Revolução Francesa ao tema “Desigualdade social no Brasil”.' },
+            { type: 'exercise', title: '', text: 'Explique em 3 linhas como Bauman pode ser usado no tema “Relacionamentos líquidos nas redes sociais”.' }
+          ]
+        }
+      ],
+      summary: {
+        title: 'Resumo Aristocrata',
+        icon: <Crown className="h-6 w-6 text-primary" />,
+        points: [
+          'Repertório não é enfeite, é arma de guerra.',
+          'Cite autores e eventos históricos com conexão lógica ao tema.',
+          'Filosofia dá profundidade, História dá contexto, Atualidade dá força de prova.'
+        ],
+        catchphrase: '“Quem domina repertório, domina a banca.”'
       }
     }
   ]
@@ -221,15 +308,15 @@ const renderContent = (contentItem: any, index: number) => {
     case 'exercise':
       return (
         <div key={index} className="mt-6 p-4 border-l-4 border-primary bg-primary/10 rounded-r-md">
-            <h4 className="font-bold text-primary mb-2">{contentItem.title}</h4>
+            {contentItem.title && <h4 className="font-bold text-primary mb-2">{contentItem.title}</h4>}
             <p className="text-foreground/90 whitespace-pre-line">{contentItem.text}</p>
         </div>
       );
     case 'quote':
         return (
             <blockquote key={index} className="mt-4 border-l-4 border-border pl-4 italic text-foreground/80">
-                <h4 className="font-bold text-foreground not-italic mb-2">{contentItem.title}</h4>
-                <p className="whitespace-pre-line">{contentItem.text}</p>
+                {contentItem.title && <h4 className="font-bold text-foreground not-italic mb-2">{contentItem.title}</h4>}
+                {contentItem.text && <p className="whitespace-pre-line">{contentItem.text}</p>}
             </blockquote>
         );
     default:
@@ -285,39 +372,39 @@ const ChapterModal = ({ chapter }: { chapter: typeof studyContent.chapters[0] })
 export default function EstudoPage() {
   const [openChapter, setOpenChapter] = useState<string | null>(null);
 
-  const firstChapter = studyContent.chapters[0];
-
   return (
     <div className="space-y-12">
       <section className="text-center">
-        <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight font-headline mb-4 text-primary">{firstChapter.mainTitle}</h1>
+        <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight font-headline mb-4 text-primary">{studyContent.mainTitle}</h1>
         <p className="text-lg md:text-xl text-foreground/90 max-w-3xl mx-auto">
-            {firstChapter.mainDescription}
+            {studyContent.mainDescription}
         </p>
       </section>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <Dialog onOpenChange={(isOpen) => !isOpen && setOpenChapter(null)}>
-            <DialogTrigger asChild>
-                <Card 
-                    className="bg-card hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer flex flex-col"
-                    onClick={() => setOpenChapter(firstChapter.id)}
-                >
-                    <CardHeader className="flex-grow">
-                        <div className="mb-4">{firstChapter.icon}</div>
-                        <CardTitle className="font-headline text-xl tracking-tight">{firstChapter.title}</CardTitle>
-                        <CardDescription>{firstChapter.description}</CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                        <Button variant="link" className="p-0">
-                            Abrir Capítulo
-                            <ChevronRight className="h-4 w-4 ml-1" />
-                        </Button>
-                    </CardContent>
-                </Card>
-            </DialogTrigger>
-            {openChapter === firstChapter.id && <ChapterModal chapter={firstChapter} />}
-        </Dialog>
+        {studyContent.chapters.map((chapter) => (
+            <Dialog key={chapter.id} onOpenChange={(isOpen) => !isOpen && setOpenChapter(null)}>
+                <DialogTrigger asChild>
+                    <Card 
+                        className="bg-card hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer flex flex-col"
+                        onClick={() => setOpenChapter(chapter.id)}
+                    >
+                        <CardHeader className="flex-grow">
+                            <div className="mb-4">{chapter.icon}</div>
+                            <CardTitle className="font-headline text-xl tracking-tight">{chapter.title}</CardTitle>
+                            <CardDescription className="text-foreground/90">{chapter.description}</CardDescription>
+                        </CardHeader>
+                        <CardContent>
+                            <Button variant="link" className="p-0">
+                                Abrir Capítulo
+                                <ChevronRight className="h-4 w-4 ml-1" />
+                            </Button>
+                        </CardContent>
+                    </Card>
+                </DialogTrigger>
+                {openChapter === chapter.id && <ChapterModal chapter={chapter} />}
+            </Dialog>
+        ))}
       </div>
     </div>
   );
