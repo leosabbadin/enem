@@ -10,7 +10,7 @@ if (!admin.apps.length) {
     const serviceAccount = JSON.parse(serviceAccountString);
     admin.initializeApp({
       credential: admin.credential.cert(serviceAccount),
-      databaseURL: `https://${process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID}.firebaseio.com`,
+      databaseURL: `https://`+ process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID +`.firebaseio.com`,
     });
   } catch (error) {
     console.error('Firebase Admin Initialization Error:', error);
