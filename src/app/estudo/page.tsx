@@ -6,7 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { CheckCircle2, BookCopy, ChevronRight, GraduationCap, History, Target, PenTool, Swords, Crown, BrainCircuit, Blocks } from 'lucide-react';
+import { CheckCircle2, BookCopy, ChevronRight, GraduationCap, History, Target, PenTool, Swords, Crown, BrainCircuit, Blocks, TrendingUp } from 'lucide-react';
 
 const studyContent = {
   mainTitle: "Capítulos de Estudo",
@@ -354,6 +354,91 @@ const studyContent = {
         ],
         catchphrase: '“Quem domina um parágrafo, domina a redação inteira.”'
       }
+    },
+    {
+      id: 'chapter-4',
+      title: "Capítulo 4 – Temas Prováveis do ENEM 2025",
+      description: "Antecipe os temas mais quentes para o ENEM 2025 e saiba como adaptar seu repertório para qualquer desafio.",
+      icon: <TrendingUp className="h-10 w-10 text-primary" />,
+      subchapters: [
+        {
+          title: "Por que prever temas?",
+          icon: <BrainCircuit className="h-6 w-6 text-primary" />,
+          content: [
+            { type: 'paragraph', text: 'O ENEM sempre escolhe temas sociais relevantes e atuais, ligados a direitos humanos.' },
+            { type: 'paragraph', text: 'O aluno não precisa acertar o tema exato, mas deve estar pronto para adaptar repertórios a temas próximos.' },
+            { type: 'examples', title: '', items: [{ label: 'Exemplo:', text: 'Se cair “inclusão digital”, dá pra usar o mesmo arsenal em “inteligência artificial e desigualdade”.' }] }
+          ]
+        },
+        {
+          title: "Temas prováveis de 2025 (com análises)",
+          icon: <Target className="h-6 w-6 text-primary" />,
+          content: [
+            { type: 'list', title: '1. Mudanças Climáticas e Sustentabilidade Urbana', items: [
+              'Por que pode cair? Brasil será sede da COP-30 em 2025.',
+              'Tese pronta: A falta de políticas sustentáveis compromete o futuro das cidades brasileiras.',
+              'Repertório: Papa Francisco (Encíclica Laudato Si, cuidado com a casa comum), Revolução Industrial → início da degradação ambiental, Agenda 2030 da ONU.',
+              'Proposta: Investimento em mobilidade sustentável + gestão de resíduos urbanos.'
+            ]},
+            { type: 'list', title: '2. Inteligência Artificial e Ética', items: [
+              'Por que pode cair? Debate global sobre impactos da IA no trabalho, privacidade e educação.',
+              'Tese pronta: O avanço da inteligência artificial sem regulamentação ética ameaça direitos fundamentais.',
+              'Repertório: Kant → uso da razão com responsabilidade moral, Foucault → vigilância e controle dos dados, Revolução Industrial → impacto tecnológico no emprego.',
+              'Proposta: Criação de leis para uso ético da IA + capacitação profissional.'
+            ]},
+            { type: 'list', title: '3. Saúde Mental dos Jovens e Redes Sociais', items: [
+              'Por que pode cair? Dados crescentes de ansiedade e depressão na juventude.',
+              'Tese pronta: O uso desregulado das redes sociais tem agravado problemas de saúde mental entre jovens brasileiros.',
+              'Repertório: Freud → conflitos psíquicos, Bauman → liquidez dos relacionamentos virtuais, Constituição 1988 → direito à saúde.',
+              'Proposta: Programas escolares de educação emocional + campanhas de uso consciente das redes.'
+            ]},
+            { type: 'list', title: '4. Desinformação e Fake News', items: [
+              'Por que pode cair? Deepfakes, eleições municipais e crise de confiança na informação.',
+              'Tese pronta: A proliferação de fake news ameaça a democracia e exige alfabetização midiática.',
+              'Repertório: Hannah Arendt → banalização da verdade, Constituição 1988 → liberdade de expressão vs. responsabilidade, Exemplos atuais: eleições, pandemia.',
+              'Proposta: Projetos de educação midiática + regulação das plataformas digitais.'
+            ]},
+            { type: 'list', title: '5. Direito à Moradia e à Cidade', items: [
+              'Por que pode cair? Crise habitacional e urbanização desordenada.',
+              'Tese pronta: A falta de políticas habitacionais efetivas compromete a dignidade humana nas cidades brasileiras.',
+              'Repertório: Constituição 1988 (art. 6º: moradia como direito social), Revolução Industrial → favelização urbana histórica, Relatórios da ONU-Habitat.',
+              'Proposta: Programas de habitação popular + urbanização sustentável.'
+            ]}
+          ]
+        },
+        {
+          title: "Fórmula de adaptação",
+          icon: <PenTool className="h-6 w-6 text-primary" />,
+          content: [
+            { type: 'list', title: 'Para qualquer tema novo, o aluno deve:', items: [
+              'Definir tese clara (problema + impacto).',
+              'Escolher 1 filósofo ou dado histórico aplicável.',
+              'Amarrar com Constituição ou ONU (direito humano).',
+              'Fechar com proposta detalhada (quem, como, para quê).'
+            ]}
+          ]
+        },
+        {
+          title: "Exercícios práticos",
+          icon: <Target className="h-6 w-6 text-primary" />,
+          content: [
+            { type: 'exercise', text: 'Escreva uma introdução para o tema “Desinformação no Brasil” usando Hannah Arendt.' },
+            { type: 'exercise', text: 'Monte um parágrafo de desenvolvimento para o tema “Saúde mental e juventude” com Bauman.' },
+            { type: 'exercise', text: 'Crie uma proposta de intervenção para o tema “Inteligência artificial e ética”, detalhando ator, ação e objetivo.' },
+            { type: 'exercise', text: 'Adapte um repertório da Revolução Industrial para o tema “Mudanças climáticas atuais”.' }
+          ]
+        }
+      ],
+      summary: {
+        title: 'Resumo Aristocrata',
+        icon: <Crown className="h-6 w-6 text-primary" />,
+        points: [
+          'O ENEM 2025 deve girar em torno de meio ambiente, tecnologia, informação ou direitos sociais.',
+          'Quem estuda temas prováveis tem vantagem, mas o segredo é saber adaptar repertório.',
+          'Um Aristocrata não é surpreendido: ele já tem munição para qualquer guerra.'
+        ],
+        catchphrase: '“Quem prevê, domina. Quem improvisa, arrisca.”'
+      }
     }
   ]
 };
@@ -499,5 +584,3 @@ export default function EstudoPage() {
     </div>
   );
 }
-
-    
