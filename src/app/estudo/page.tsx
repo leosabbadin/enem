@@ -25,7 +25,7 @@ const studyContent = {
             {
               type: 'paragraph',
               title: 'Explicação',
-              text: 'A redação é corrigida por 2 avaliadores diferentes, cada um pode dar até 200 pontos em 5 competências. Se houver diferença grande, entra um terceiro corretor. A nota final é a média.'
+              text: 'A redação é corrigida por 2 avaliadores diferentes, cada um pode dar até 200 pontos em 5 competências.\nSe houver diferença grande, entra um terceiro corretor.\nA nota final é a média.'
             },
             {
               type: 'list',
@@ -587,6 +587,90 @@ const studyContent = {
           'Quem treina aqui, entra na prova já em guerra vencida.',
         ],
         catchphrase: '“Quem sua no treino, sangra menos na guerra.”'
+      }
+    },
+    {
+      id: 'chapter-7',
+      title: "Capítulo 7 – Redações Comentadas: do Ruim ao Nota 1000",
+      description: "Analise exemplos de redações, da nota zero à nota máxima, e entenda na prática o que fazer e o que não fazer.",
+      icon: <ClipboardCheck className="h-10 w-10 text-primary" />,
+      subchapters: [
+        {
+          title: "Estrutura das redações",
+          icon: <BookCopy className="h-6 w-6 text-primary" />,
+          content: [
+            { type: 'paragraph', text: 'Todas baseadas no mesmo tema simulado:\n“Os desafios da inclusão digital no Brasil”' },
+          ]
+        },
+        {
+          title: "Redação Nota 0 – Fuga do tema",
+          icon: <ThumbsDown className="h-6 w-6 text-primary" />,
+          content: [
+            { type: 'quote', title: 'Texto:', text: 'O futebol é a maior paixão nacional. Ele une pessoas, movimenta a economia e transforma vidas. Muitos jovens sonham em ser jogadores, e isso é parte da cultura brasileira. Por isso, é essencial investir em escolinhas e campeonatos, para que o Brasil continue sendo reconhecido como o país do futebol.' },
+            { type: 'paragraph', title: 'Comentário:', text: '⚠️ Fugiu totalmente do tema → nota zero.\nNão importa se o texto está bem escrito: se não responde ao enunciado, é eliminado.' },
+          ]
+        },
+        {
+          title: "Redação Nota 500–600 – Razoável, mas cheia de falhas",
+          icon: <ThumbsDown className="h-6 w-6 text-primary" />,
+          content: [
+            { type: 'quote', title: 'Texto:', text: 'A inclusão digital é importante no Brasil, porque muitas pessoas não têm internet. Isso atrapalha os estudos e o trabalho. O governo precisa ajudar as pessoas que não têm acesso, porque sem internet a vida fica difícil. Além disso, é importante que todos aprendam a usar a internet, porque ela é fundamental hoje em dia. Portanto, é necessário que o governo invista em tecnologia para todos.' },
+            { type: 'list', title: '⚠️ Problemas:', items: [
+              'Argumentos superficiais, repetitivos.',
+              'Sem repertório sociocultural (filósofos, dados, leis).',
+              'Conclusão vaga: “investir em tecnologia”.',
+              'Estrutura pobre, conectores básicos (“porque”, “além disso”).',
+            ]},
+          ]
+        },
+        {
+          title: "Redação Nota 800–850 – Boa, mas não perfeita",
+          icon: <TrendingUp className="h-6 w-6 text-primary" />,
+          content: [
+            { type: 'quote', title: 'Texto:', text: 'A inclusão digital no Brasil ainda é um desafio que aprofunda desigualdades sociais. Em áreas periféricas e rurais, a ausência de internet de qualidade impede que cidadãos tenham acesso a oportunidades de educação e trabalho. Segundo relatório da ONU (2022), cerca de 40% da população mundial ainda não possui conexão regular. Esse dado revela a necessidade de políticas públicas urgentes para ampliar a conectividade.\n\nAlém disso, a falta de letramento digital contribui para o mau uso da tecnologia. Muitos brasileiros limitam-se ao uso das redes sociais, sem explorar seu potencial educacional e profissional. Para Adorno e Horkheimer, a indústria cultural molda a forma como a sociedade consome informação, o que reforça o uso limitado da internet como entretenimento.\n\nPortanto, é fundamental que o Ministério das Comunicações amplie o acesso à rede em todo o território nacional, por meio de investimentos em infraestrutura tecnológica, com o objetivo de reduzir desigualdades sociais. Paralelamente, o Ministério da Educação deve implementar programas de letramento digital nas escolas, para que o uso da tecnologia seja mais consciente e produtivo.' },
+            { type: 'list', title: 'Comentário:', items: [
+              '✅ Estrutura clara.',
+              '✅ Bom repertório (ONU + Adorno/Horkheimer).',
+              '⚠️ Conclusão ainda poderia detalhar melhor o “como”.',
+              '⚠️ Estilo poderia ter mais conectores sofisticados.',
+            ]},
+          ]
+        },
+        {
+          title: "Redação Nota 1000 – Modelo de excelência",
+          icon: <Crown className="h-6 w-6 text-primary" />,
+          content: [
+            { type: 'quote', title: 'Texto:', text: 'No cenário contemporâneo, a inclusão digital representa uma das maiores demandas sociais brasileiras. A exclusão de milhões de cidadãos do acesso pleno à tecnologia compromete não apenas a igualdade de oportunidades, mas também o exercício da cidadania. A Constituição Federal de 1988 estabelece, em seu artigo 6º, que a educação e o trabalho são direitos sociais — direitos esses que hoje dependem diretamente da conectividade digital.\n\nEm primeiro lugar, a desigualdade no acesso à internet aprofunda disparidades sociais já históricas. Relatório da ONU (2023) aponta que 46 milhões de brasileiros ainda não possuem acesso à rede, o que os impede de acompanhar a evolução educacional e profissional. Tal realidade reforça o pensamento de Pierre Bourdieu sobre a reprodução das desigualdades, em que a falta de capital cultural e tecnológico perpetua exclusões.\n\nAlém disso, a ausência de letramento digital compromete o uso crítico da tecnologia. Muitos cidadãos restringem-se ao consumo superficial de redes sociais, sem usufruir das possibilidades educacionais e profissionais. Nesse sentido, a crítica de Adorno à indústria cultural evidencia como a mídia pode limitar o pensamento crítico, o que agrava a exclusão digital qualitativa.\n\nPortanto, é imprescindível que o Ministério das Comunicações amplie a infraestrutura tecnológica em áreas periféricas, por meio de parcerias público-privadas para a instalação de fibra óptica e redes móveis de qualidade, com o objetivo de democratizar o acesso à internet. Em paralelo, cabe ao Ministério da Educação implementar programas de capacitação digital, por meio da inclusão de disciplinas de letramento digital nas escolas públicas, a fim de garantir que os cidadãos usem a tecnologia de forma crítica e produtiva. Assim, o Brasil poderá avançar rumo a uma sociedade mais justa e inclusiva.' },
+            { type: 'list', title: 'Comentário:', items: [
+              '✅ Estrutura impecável (introdução + 2 desenvolvimentos + conclusão).',
+              '✅ Repertório sociocultural variado e bem conectado (Constituição, ONU, Bourdieu, Adorno).',
+              '✅ Conclusão detalhada (quem + como + para quê).',
+              '✅ Linguagem formal, coesa e sofisticada.',
+              '🏆 Resultado: Nota 1000.',
+            ]},
+          ]
+        },
+        {
+          title: "Exercícios práticos",
+          icon: <PenTool className="h-6 w-6 text-primary" />,
+          content: [
+            { type: 'list', title: '', items: [
+              'Reescreva a redação nota 600, adicionando repertório e melhorando a conclusão.',
+              'Compare a redação 800 e a 1000: quais elementos a segunda tem que a primeira não trouxe?',
+              'Escolha outro tema provável (ex.: saúde mental) e escreva uma versão “ruim” e depois uma “boa”.',
+            ]}
+          ]
+        }
+      ],
+      summary: {
+        title: 'Resumo Aristocrata',
+        icon: <Crown className="h-6 w-6 text-primary" />,
+        points: [
+          'Ler redações comentadas acelera o aprendizado.',
+          'Erros comuns: superficialidade, repetição, conclusão vaga.',
+          'Acertos que valem ouro: repertório conectado, proposta detalhada, coesão.'
+        ],
+        catchphrase: '“Aprender com os erros dos outros é chegar ao topo sem tropeçar.”'
       }
     }
   ]
