@@ -8,6 +8,10 @@ import { getDatabase } from 'firebase-admin/database';
 export const runtime = 'nodejs';
 
 async function verifySession(sessionCookie: string) {
+  if (!adminAuth) {
+    console.error("Firebase Admin not initialized. Skipping session verification.");
+    return null;
+  }
   try {
     const decodedToken = await adminAuth.verifySessionCookie(sessionCookie, true);
     // Use the Admin SDK to get a reference to the database

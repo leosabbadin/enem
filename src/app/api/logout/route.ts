@@ -5,6 +5,9 @@ import { adminAuth } from '@/lib/firebase-admin';
 import { getDatabase } from 'firebase-admin/database';
 
 export async function POST() {
+  if (!adminAuth) {
+    return NextResponse.json({ error: 'Firebase Admin not initialized' }, { status: 500 });
+  }
   const sessionCookie = cookies().get('session')?.value;
   if (!sessionCookie) {
     return NextResponse.json({ status: 'success' });

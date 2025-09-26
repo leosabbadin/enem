@@ -5,6 +5,9 @@ import { cookies } from 'next/headers';
 import { getDatabase } from 'firebase-admin/database';
 
 export async function POST(req: NextRequest) {
+  if (!adminAuth) {
+    return NextResponse.json({ error: 'Firebase Admin not initialized' }, { status: 500 });
+  }
   const { idToken } = await req.json();
 
   if (!idToken) {
