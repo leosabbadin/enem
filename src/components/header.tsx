@@ -65,7 +65,7 @@ export default function Header() {
                     </Button>
                   </SheetClose>
                    <SheetClose asChild>
-                    <Button asChild className="font-bold text-lg justify-start">
+                    <Button asChild className="text-lg justify-start">
                       <Link href="/">
                         <BotMessageSquare className="mr-3 h-5 w-5" />
                         Corrigir Redação
