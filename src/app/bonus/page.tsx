@@ -7,7 +7,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Button } from '@/components/ui/button';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import { Gift, Lightbulb, Swords, BookCheck, CheckCircle2, ChevronRight, MessagesSquare, ClipboardCheck } from 'lucide-react';
+import { Gift, Lightbulb, Swords, BookCheck, CheckCircle2, ChevronRight, MessagesSquare, ClipboardCheck, Projector, Brain } from 'lucide-react';
 
 const bonusItems = [
     {
@@ -119,6 +119,47 @@ const bonusItems = [
             ],
             catchphrase: "“Quem fecha a redação com proposta sólida, abre a porta para a nota 1000.”"
         }
+    },
+    {
+        id: 'bonus-4',
+        icon: <Projector className="h-10 w-10 text-primary" />,
+        title: "Bônus 4 – Mapa Mental da Estrutura Nota 1000",
+        description: "Visualize a estrutura completa da redação para nunca mais se perder no texto.",
+        type: 'mindmap',
+        content: {
+            sections: [
+                {
+                    title: 'Estrutura Geral',
+                    items: [
+                        { subtitle: '1. Introdução', points: ['Apresentar o tema.', 'Contextualizar com repertório (filosofia, história, dados).', 'Tese clara: “Esse problema precisa ser resolvido porque X e Y.”', '👉 Frase-chave: “É notório que...” ou “Diante desse cenário...”'] },
+                        { subtitle: '2. Desenvolvimento 1 (1º argumento)', points: ['Ideia principal.', 'Explicação do problema.', 'Exemplo ou repertório.', 'Mini-conclusão conectando com a tese.', '👉 Use conectores: “Primeiramente”, “Convém ressaltar que”.'] },
+                        { subtitle: '3. Desenvolvimento 2 (2º argumento)', points: ['Outro aspecto relevante.', 'Explicação do impacto.', 'Repertório (autor, lei, dados, caso histórico).', 'Mini-conclusão ligando ao tema central.', '👉 Use conectores: “Ademais”, “Além disso”, “Outrossim”.'] },
+                        { subtitle: '4. Conclusão (Proposta de intervenção)', points: ['Reforço da tese.', 'Proposta no modelo quem + como + para quê.', 'Detalhamento com pelo menos 2 agentes sociais.', '👉 Use conectores: “Portanto”, “Logo”, “Dessa forma”.'] }
+                    ]
+                },
+                {
+                    title: 'Versão Visual (Mapa Mental)',
+                    items: [
+                        { subtitle: '🎯 Estrutura Nota 1000 = 4 blocos conectados:', points: ['[INTRODUÇÃO] → [DESENVOLVIMENTO 1] → [DESENVOLVIMENTO 2] → [CONCLUSÃO]'] },
+                        { subtitle: 'Introdução = tema + repertório + tese.' },
+                        { subtitle: 'Desenvolvimento = argumento + explicação + repertório.' },
+                        { subtitle: 'Conclusão = proposta detalhada.' },
+                    ]
+                },
+                {
+                    title: 'Dicas Rápidas (para fixar no mapa mental)',
+                    items: [
+                        { points: ['1h é suficiente: 10min planejar, 40min escrever, 10min revisar.', 'Use sempre 2 repertórios diferentes (um filosófico e um atual).', 'Nunca feche sem proposta detalhada → custa até 200 pontos.', 'Respeite o limite: mínimo 7 linhas, máximo 30 linhas.'] }
+                    ]
+                }
+            ],
+            benefits: [
+                "Clareza total da estrutura, sem precisar decorar fórmulas complicadas.",
+                "Facilita o treino e a revisão.",
+                "Pode ser impresso e colado na parede como lembrete visual."
+            ],
+            catchphrase: "“Quem domina a estrutura, escreve no automático e vence o relógio do ENEM.”"
+        }
     }
 ];
 
@@ -207,6 +248,33 @@ const BonusModal = ({ bonus }: { bonus: typeof bonusItems[0] }) => {
                             </section>
                         </>
                     )}
+                    
+                    {bonus.type === 'mindmap' && (
+                         <section className="space-y-6">
+                            {bonus.content.sections.map((section, index) => (
+                                <div key={index}>
+                                    <h3 className="text-2xl font-bold font-headline flex items-center gap-3 mb-4"><Brain className="h-6 w-6 text-primary" /> {section.title}</h3>
+                                     <div className="pl-9 space-y-4">
+                                        {section.items.map((item, i) => (
+                                            <div key={i} className="p-4 border rounded-lg bg-card/50">
+                                                {item.subtitle && <h4 className="font-bold text-foreground mb-2">{item.subtitle}</h4>}
+                                                {item.points && (
+                                                    <ul className="space-y-2">
+                                                        {item.points.map((point, pIndex) => (
+                                                            <li key={pIndex} className="flex items-start gap-2">
+                                                                <ChevronRight className="h-4 w-4 text-primary mt-1 flex-shrink-0" />
+                                                                <span className="text-foreground/90">{point}</span>
+                                                            </li>
+                                                        ))}
+                                                    </ul>
+                                                )}
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </section>
+                    )}
 
 
                     <section>
@@ -277,3 +345,5 @@ export default function BonusPage() {
         </div>
     );
 }
+
+    
