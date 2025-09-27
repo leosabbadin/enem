@@ -1,6 +1,6 @@
 
 import { NextRequest, NextResponse } from 'next/server';
-import { adminAuth } from '@/lib/firebase-admin';
+import admin from '@/lib/firebaseAdmin';
 import { cookies } from 'next/headers';
 
 export async function POST(req: NextRequest) {
@@ -15,7 +15,7 @@ export async function POST(req: NextRequest) {
     const expiresIn = 60 * 60 * 24 * 5 * 1000;
     
     // Create the session cookie. This will also verify the ID token.
-    const sessionCookie = await adminAuth.createSessionCookie(idToken, { expiresIn });
+    const sessionCookie = await admin.auth().createSessionCookie(idToken, { expiresIn });
 
     const options = {
       name: 'session',
